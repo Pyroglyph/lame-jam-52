@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddshwma8lykn3"]
+
+[ext_resource type="Texture2D" uid="uid://clno8ha7allag" path="res://assets/cell.png" id="1_yh0nt"]
+[ext_resource type="Script" uid="uid://df1hworj25jcb" path="res://src/cell.gd" id="2_gwrgs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwrgs"]
+size = Vector2(32, 32)
+
+[node name="Cell" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.247059)
+texture = ExtResource("1_yh0nt")
+script = ExtResource("2_gwrgs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gwrgs")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

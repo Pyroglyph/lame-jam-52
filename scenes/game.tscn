@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm5wyjvcwvasy"]
+
+[ext_resource type="Texture2D" uid="uid://36ay4vwsrg3g" path="res://assets/bg-temp.png" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://bqxond7ea3wk5" path="res://src/item.gd" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
+
+[node name="Game" type="Node2D"]
+texture_filter = 1
+
+[node name="temp bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_lnu2h")
+centered = false
+
+[node name="Item" type="Node2D" parent="."]
+position = Vector2(26, 26)
+script = ExtResource("2_lbhrr")
+item_name = "something"
+
+[node name="Cell26" parent="Item" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+position = Vector2(0, 32)
+is_item = true
+
+[node name="Cell27" parent="Item" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+is_item = true
+
+[node name="Item2" type="Node2D" parent="."]
+position = Vector2(90, 26)
+script = ExtResource("2_lbhrr")
+item_name = "tetromino"
+
+[node name="Cell26" parent="Item2" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+position = Vector2(0, 32)
+is_item = true
+
+[node name="Cell27" parent="Item2" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+is_item = true
+
+[node name="Cell28" parent="Item2" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+position = Vector2(32, 64)
+is_item = true
+
+[node name="Cell29" parent="Item2" instance=ExtResource("3_iywne")]
+modulate = Color(1, 0.552941, 0.0352941, 0.498039)
+position = Vector2(32, 32)
+is_item = true
+
+[node name="Grid" type="Node2D" parent="."]
+position = Vector2(10, 10)
+
+[node name="Cell" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(16, 144)
+
+[node name="Cell2" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(16, 112)
+
+[node name="Cell3" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(48, 144)
+
+[node name="Cell4" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(48, 112)
+
+[node name="Cell5" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(16, 80)
+
+[node name="Cell6" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(16, 48)
+
+[node name="Cell7" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(48, 80)
+
+[node name="Cell8" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(48, 48)
+
+[node name="Cell9" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(80, 144)
+
+[node name="Cell10" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(80, 112)
+
+[node name="Cell11" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(112, 144)
+
+[node name="Cell24" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(144, 144)
+
+[node name="Cell12" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(112, 112)
+
+[node name="Cell13" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(80, 80)
+
+[node name="Cell14" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(80, 48)
+
+[node name="Cell15" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(112, 80)
+
+[node name="Cell16" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(112, 48)
+
+[node name="Cell17" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(48, 16)
+
+[node name="Cell25" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(16, 16)
+
+[node name="Cell18" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(80, 16)
+
+[node name="Cell19" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(144, 112)
+
+[node name="Cell20" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(144, 80)
+
+[node name="Cell21" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(112, 16)
+
+[node name="Cell22" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(144, 48)
+
+[node name="Cell23" parent="Grid" instance=ExtResource("3_iywne")]
+position = Vector2(144, 16)
