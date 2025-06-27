@@ -1,9 +1,13 @@
-extends Sprite2D
+extends Node2D
 class_name Cell
 
 @export var is_item = false
 
 var contains: Item = null
+
+func _process(delta: float) -> void:
+	if is_item:
+		$Sprite2D.texture = null
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if is_item and event is InputEventMouseButton and event.is_pressed():

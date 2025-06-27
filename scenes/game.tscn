@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=5 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Texture2D" uid="uid://36ay4vwsrg3g" path="res://assets/bg-temp.png" id="1_lnu2h"]
-[ext_resource type="Script" uid="uid://bqxond7ea3wk5" path="res://src/item.gd" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bu3xl85er855x" path="res://scenes/items/scroll.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://d3onrjn6ydtcq" path="res://scenes/items/goblet.tscn" id="3_p57ef"]
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -10,44 +11,6 @@ texture_filter = 1
 [node name="temp bg" type="Sprite2D" parent="."]
 texture = ExtResource("1_lnu2h")
 centered = false
-
-[node name="Item" type="Node2D" parent="."]
-position = Vector2(26, 26)
-script = ExtResource("2_lbhrr")
-item_name = "something"
-
-[node name="Cell26" parent="Item" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-position = Vector2(0, 32)
-is_item = true
-
-[node name="Cell27" parent="Item" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-is_item = true
-
-[node name="Item2" type="Node2D" parent="."]
-position = Vector2(90, 26)
-script = ExtResource("2_lbhrr")
-item_name = "tetromino"
-
-[node name="Cell26" parent="Item2" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-position = Vector2(0, 32)
-is_item = true
-
-[node name="Cell27" parent="Item2" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-is_item = true
-
-[node name="Cell28" parent="Item2" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-position = Vector2(32, 64)
-is_item = true
-
-[node name="Cell29" parent="Item2" instance=ExtResource("3_iywne")]
-modulate = Color(1, 0.552941, 0.0352941, 0.498039)
-position = Vector2(32, 32)
-is_item = true
 
 [node name="Grid" type="Node2D" parent="."]
 position = Vector2(10, 10)
@@ -126,3 +89,9 @@ position = Vector2(144, 48)
 
 [node name="Cell23" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(144, 16)
+
+[node name="Scroll" parent="." instance=ExtResource("2_iywne")]
+position = Vector2(154, 26)
+
+[node name="Goblet" parent="." instance=ExtResource("3_p57ef")]
+position = Vector2(26, 26)

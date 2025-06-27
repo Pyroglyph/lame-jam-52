@@ -6,14 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwrgs"]
 size = Vector2(32, 32)
 
-[node name="Cell" type="Sprite2D"]
+[node name="Cell" type="Node2D"]
 modulate = Color(1, 1, 1, 0.247059)
-texture = ExtResource("1_yh0nt")
 script = ExtResource("2_gwrgs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_gwrgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yh0nt")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

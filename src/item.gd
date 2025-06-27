@@ -1,14 +1,19 @@
 extends Node2D
 class_name Item
 
-@export var item_name: String = "Item"
-@export var value: int
+@export var item_name := "Item"
+@export var base_value: int
+@export_enum("Bronze", "Silver", "Gold") var tier: int = Tier.BRONZE
 
 var is_grabbed = false
 var grab_offset = Vector2.ZERO
 var target_position = global_position
 var original_position = Vector2.ZERO
 var original_grid_cells = []
+
+func get_value() -> int:
+	var multiplier = 1 + (tier as float * 0.8)
+	return int(floorf(base_value * multiplier))	
 
 var is_cell = func(c): return c is Cell
 func get_grid_cells() -> Array[Cell]:
@@ -41,6 +46,16 @@ func _process(_delta: float) -> void:
 		target_position = get_viewport().get_mouse_position() - grab_offset
 	
 	global_position = global_position.lerp(target_position, 0.2)
+
+	# null check is only required for development
+	if $Sprite2D:
+		match tier:
+			Tier.BRONZE:
+				$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
+			Tier.SILVER:
+				$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
+			Tier.GOLD:
+				$Sprite2D.modulate = Color(1, 1, 0) # Gold color
 
 func on_release():
 	var grid_cells = get_grid_cells()
