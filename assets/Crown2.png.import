@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sbm5xm5docl5"
-path="res://.godot/imported/scroll.png-deb7ec071468d3b2096650c4ad5b514c.ctex"
+uid="uid://dykkqfc17eift"
+path="res://.godot/imported/Crown2.png-bb8f2b09cc2f33f282074e464c794dda.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scroll.png"
-dest_files=["res://.godot/imported/scroll.png-deb7ec071468d3b2096650c4ad5b514c.ctex"]
+source_file="res://assets/Crown2.png"
+dest_files=["res://.godot/imported/Crown2.png-bb8f2b09cc2f33f282074e464c794dda.ctex"]
 
 [params]
 
