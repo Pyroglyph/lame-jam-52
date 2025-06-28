@@ -8,6 +8,7 @@
 script = ExtResource("1_cxr5q")
 item_name = "Goblet"
 base_value = 10
+metadata/_custom_type_script = "uid://bqxond7ea3wk5"
 
 [node name="Cell" parent="." instance=ExtResource("2_esp5p")]
 is_item = true

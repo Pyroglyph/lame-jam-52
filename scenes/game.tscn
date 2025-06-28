@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=9 format=3 uid="uid://cm5wyjvcwvasy"]
 
+[ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://36ay4vwsrg3g" path="res://assets/bg-temp.png" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bu3xl85er855x" path="res://scenes/items/scroll.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://d3onrjn6ydtcq" path="res://scenes/items/goblet.tscn" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cqyx12pl6n80p" path="res://scenes/items/dagger.tscn" id="4_u5sy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(133, 122)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_iywne")
+common_items = Array[PackedScene]([ExtResource("4_u5sy4"), ExtResource("3_p57ef"), ExtResource("2_iywne")])
 
 [node name="temp bg" type="Sprite2D" parent="."]
 texture = ExtResource("1_lnu2h")
@@ -95,8 +102,8 @@ position = Vector2(144, 48)
 [node name="Cell23" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(144, 16)
 
-[node name="Scroll" parent="." instance=ExtResource("2_iywne")]
-position = Vector2(159, 35)
+[node name="DiscardArea" type="Area2D" parent="."]
 
-[node name="Goblet" parent="." instance=ExtResource("3_p57ef")]
-position = Vector2(31, 34)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiscardArea"]
+position = Vector2(266, 119)
+shape = SubResource("RectangleShape2D_p57ef")

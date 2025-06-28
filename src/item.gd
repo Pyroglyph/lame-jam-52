@@ -5,10 +5,10 @@ class_name Item
 @export var base_value: int
 @export_enum("Bronze", "Silver", "Gold") var tier: int = Tier.BRONZE
 
-var is_grabbed = false
-var grab_offset = Vector2.ZERO
-var target_position = global_position
-var original_position = Vector2.ZERO
+var is_grabbed := false
+var grab_offset := Vector2.ZERO
+var target_position := Vector2.ZERO
+var original_position := Vector2.ZERO
 var original_grid_cells = []
 
 func get_value() -> int:
