@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqxond7ea3wk5" path="res://src/item.gd" id="1_cxr5q"]
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="2_esp5p"]
-[ext_resource type="Texture2D" uid="uid://blw5jt1gtw3sr" path="res://assets/goblet.png" id="3_esp5p"]
+[ext_resource type="Texture2D" uid="uid://blw5jt1gtw3sr" path="res://assets/goblet_tint.png" id="3_esp5p"]
 
 [node name="Goblet" type="Node2D"]
 script = ExtResource("1_cxr5q")
@@ -13,5 +13,5 @@ metadata/_custom_type_script = "uid://bqxond7ea3wk5"
 [node name="Cell" parent="." instance=ExtResource("2_esp5p")]
 is_item = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2DTint" type="Sprite2D" parent="."]
 texture = ExtResource("3_esp5p")
