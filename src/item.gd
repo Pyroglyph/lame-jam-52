@@ -49,15 +49,13 @@ func _process(_delta: float) -> void:
 	
 	global_position = global_position.lerp(target_position, 0.2)
 
-	# null check is only required for development
-	if $Sprite2D:
-		match tier:
-			Tier.BRONZE:
-				$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
-			Tier.SILVER:
-				$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
-			Tier.GOLD:
-				$Sprite2D.modulate = Color(1, 1, 0) # Gold color
+	match tier:
+		Tier.BRONZE:
+			$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
+		Tier.SILVER:
+			$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
+		Tier.GOLD:
+			$Sprite2D.modulate = Color(1, 1, 0) # Gold color
 
 func intersects_with(global_rect: Rect2) -> bool:
 	# This only handles rectangles
@@ -74,41 +72,59 @@ func intersects_with(global_rect: Rect2) -> bool:
 
 	return intersects
 
+func discard():
+	# discard area automatically handles new children, so no need to fiddle with positioning
+	reparent($/root/Game/DiscardArea)
+	is_grabbed = false
+	z_index = 0
+
 func on_release():
 	# first, determine if any of the cells are colliding with the discard area
 	var discard_local_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
 	var discard_global_rect: Rect2 = discard_local_rect * $/root/Game/DiscardArea.global_transform
 	if intersects_with(discard_global_rect):
-		print("Dropped on discard area")
-		# discard area automatically handles new children
-		reparent($/root/Game/DiscardArea)
-		is_grabbed = false
-		z_index = 0
+		discard()
 		return
 
 	# if we're not discarding it, check if its on the grid properly
 	print("Checking drop location")
 	var grid_cells = get_grid_cells()
-	var valid_position = true
 	var snap_target: Vector2 = Vector2.ZERO
 	var valid_grid_cells = []
-	for cell in get_children().filter(is_cell):
-		var is_valid_cell = false
+	var empty_cells := 0
+	var mergable_cells := 0
+	var merge_candidate: Item
+	var cells = get_children().filter(is_cell)
+	for cell in cells:
 		for grid_cell in grid_cells:
-			if grid_cell.is_empty():
-				var collider: CollisionShape2D = grid_cell.get_node("Area2D/CollisionShape2D")
-				if collider.shape is RectangleShape2D:
-					var rect = Rect2(grid_cell.global_position.round() - collider.shape.size * 0.5, collider.shape.size)
-					if rect.has_point(cell.global_position.round()):
-						is_valid_cell = true
+			var collider: CollisionShape2D = grid_cell.get_node("Area2D/CollisionShape2D")
+			var rect = Rect2(grid_cell.global_position.round() - collider.shape.size * 0.5, collider.shape.size)
+			if rect.has_point(cell.global_position.round()):
+				if grid_cell.is_empty():
+					empty_cells += 1
+					valid_grid_cells.append(grid_cell)
+					if cell.global_position.round() == global_position.round():
+						snap_target = grid_cell.global_position.round()
+					break
+				else:
+					var occupying_item: Item = grid_cell.contains
+					if tier != Tier.GOLD and occupying_item.item_name == item_name and occupying_item.tier == tier:
+						mergable_cells += 1
+						merge_candidate = occupying_item
 						valid_grid_cells.append(grid_cell)
-						if cell.global_position.round() == global_position.round():
-							snap_target = grid_cell.global_position.round()
 						break
-		if not is_valid_cell:
-			valid_position = false
-			break
-	
+
+	var is_mergable = mergable_cells == len(cells)
+	var valid_position = empty_cells == len(cells) or is_mergable
+
+	if is_mergable:
+		# all cells are mergable, so merge!
+		merge_candidate.tier += 1
+		
+		# TODO: spawn some kind of particle effect before destroying this
+		queue_free()
+		return
+
 	if valid_position:
 		# all of this items cells fall within the bounds of the grid, and on empty cells
 		print("released " + item_name)
@@ -118,9 +134,6 @@ func on_release():
 		for cell in valid_grid_cells:
 			cell.contains = self
 		
-		# for cell in original_grid_cells:
-		# 	cell.contains = null
-
 		if snap_target != Vector2.ZERO:
 			target_position = snap_target
 	else:
