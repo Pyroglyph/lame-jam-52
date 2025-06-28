@@ -10,11 +10,9 @@ item_name = "Scroll"
 base_value = 25
 
 [node name="Cell1" parent="." instance=ExtResource("2_dn2fb")]
-modulate = Color(1, 1, 1, 1)
 is_item = true
 
 [node name="Cell2" parent="." instance=ExtResource("2_dn2fb")]
-modulate = Color(1, 1, 1, 1)
 position = Vector2(0, 32)
 is_item = true
 
