@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=6 format=3 uid="uid://cm5wyjvcwvasy"]
 
+[ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://36ay4vwsrg3g" path="res://assets/bg-temp.png" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bu3xl85er855x" path="res://scenes/items/scroll.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
@@ -12,8 +13,12 @@ texture_filter = 1
 texture = ExtResource("1_lnu2h")
 centered = false
 
+[node name="Bag_ClothTM" type="Sprite2D" parent="."]
+texture = ExtResource("1_lbhrr")
+centered = false
+
 [node name="Grid" type="Node2D" parent="."]
-position = Vector2(10, 10)
+position = Vector2(15, 18)
 
 [node name="Cell" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(16, 144)
@@ -91,7 +96,7 @@ position = Vector2(144, 48)
 position = Vector2(144, 16)
 
 [node name="Scroll" parent="." instance=ExtResource("2_iywne")]
-position = Vector2(154, 26)
+position = Vector2(159, 35)
 
 [node name="Goblet" parent="." instance=ExtResource("3_p57ef")]
-position = Vector2(26, 26)
+position = Vector2(31, 34)
