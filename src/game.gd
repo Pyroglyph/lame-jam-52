@@ -37,26 +37,16 @@ func give_new_items():
 				new_items.append(item.scene)
 				break
 
-	# Distribute items evenly in the discard area
-	var discard_area_collider = $DiscardArea/CollisionShape2D
-	var rect = discard_area_collider.shape.size
-	const padding = 10
-	var item_count = new_items.size()
-	for _i in range(item_count):
-		var item = new_items[_i]
+	for item in new_items:
 		var new_item = item.instantiate()
 
 		# Add a 5% chance for an item to be rarer
 		if randi() % 20 == 0:
 			new_item.tier = Tier.SILVER
+			
 		$DiscardArea.add_child(new_item)
-		
-		# Distribute items evenly
-		var angle = _i * (360. / item_count)
-		var radius = min(rect.x - padding * 2, rect.y - padding * 2) / 3
 
-		var position_x = cos(deg_to_rad(angle)) * radius + padding
-		var position_y = sin(deg_to_rad(angle)) * radius + padding
+func next_quest():
+	$DiscardArea.discard_items()
 
-		new_item.global_position = discard_area_collider.global_position + Vector2(position_x, position_y)
-		new_item.target_position = new_item.global_position
+	give_new_items()
