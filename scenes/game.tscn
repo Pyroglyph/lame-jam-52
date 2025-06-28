@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=17 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -12,9 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://bj8hmfx4cfcfh" path="res://scenes/items/scepter.tscn" id="6_kvpfn"]
 [ext_resource type="FontFile" uid="uid://dwh88hp7prsrr" path="res://assets/alagard.ttf" id="8_gee14"]
 [ext_resource type="Script" uid="uid://cck8kukpkx6ws" path="res://src/discard_area.gd" id="11_dinhu"]
+[ext_resource type="Script" uid="uid://b1tg51aa1xrvc" path="res://src/score_tracker.gd" id="13_kvuet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(122, 122)
+
+[sub_resource type="Theme" id="Theme_dinhu"]
+default_font = ExtResource("8_gee14")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvuet"]
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -32,19 +40,7 @@ texture = ExtResource("1_lbhrr")
 centered = false
 
 [node name="Grid" type="Node2D" parent="."]
-position = Vector2(15, 18)
-
-[node name="Cell" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(16, 144)
-
-[node name="Cell2" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(16, 112)
-
-[node name="Cell3" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(48, 144)
-
-[node name="Cell4" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(48, 112)
+position = Vector2(32, 48)
 
 [node name="Cell5" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(16, 80)
@@ -57,21 +53,6 @@ position = Vector2(48, 80)
 
 [node name="Cell8" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(48, 48)
-
-[node name="Cell9" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(80, 144)
-
-[node name="Cell10" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(80, 112)
-
-[node name="Cell11" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(112, 144)
-
-[node name="Cell24" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(144, 144)
-
-[node name="Cell12" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(112, 112)
 
 [node name="Cell13" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(80, 80)
@@ -94,20 +75,8 @@ position = Vector2(16, 16)
 [node name="Cell18" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(80, 16)
 
-[node name="Cell19" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(144, 112)
-
-[node name="Cell20" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(144, 80)
-
 [node name="Cell21" parent="Grid" instance=ExtResource("3_iywne")]
 position = Vector2(112, 16)
-
-[node name="Cell22" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(144, 48)
-
-[node name="Cell23" parent="Grid" instance=ExtResource("3_iywne")]
-position = Vector2(144, 16)
 
 [node name="DiscardArea" type="Area2D" parent="."]
 position = Vector2(258, 113)
@@ -117,12 +86,26 @@ script = ExtResource("11_dinhu")
 position = Vector2(1, 6)
 shape = SubResource("RectangleShape2D_p57ef")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 221.0
-offset_top = 3.0
-offset_right = 317.0
-offset_bottom = 34.0
-theme_override_fonts/font = ExtResource("8_gee14")
-text = "Next Quest"
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+theme = SubResource("Theme_dinhu")
 
-[connection signal="pressed" from="Button" to="." method="next_quest"]
+[node name="NextQuestButton" type="Button" parent="UI"]
+offset_left = 272.0
+offset_top = 4.0
+offset_right = 316.0
+offset_bottom = 27.0
+text = "Done"
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 242.0
+offset_top = 30.0
+offset_right = 316.0
+offset_bottom = 45.0
+text = "0"
+label_settings = SubResource("LabelSettings_kvuet")
+horizontal_alignment = 2
+script = ExtResource("13_kvuet")
+
+[connection signal="pressed" from="UI/NextQuestButton" to="." method="next_quest"]
