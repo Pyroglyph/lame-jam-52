@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbmkr78pfsc8r"
-path="res://.godot/imported/Vambrace.png-70c5579473e3753cb1426cc80ceaa55b.ctex"
+uid="uid://sbm5xm5docl5"
+path="res://.godot/imported/scroll_tint.png-e365457b8340bcc8d2bf23a407da1d83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Vambrace.png"
-dest_files=["res://.godot/imported/Vambrace.png-70c5579473e3753cb1426cc80ceaa55b.ctex"]
+source_file="res://assets/scroll_tint.png"
+dest_files=["res://.godot/imported/scroll_tint.png-e365457b8340bcc8d2bf23a407da1d83.ctex"]
 
 [params]
 

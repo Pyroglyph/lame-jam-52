@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2n0v0ums4w4o"
-path="res://.godot/imported/Sword2.png-2d141666769a7f1a021b3d0261cb4979.ctex"
+uid="uid://blw5jt1gtw3sr"
+path="res://.godot/imported/goblet_tint.png-833855628acd67ed56003d2d89ce6e05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sword2.png"
-dest_files=["res://.godot/imported/Sword2.png-2d141666769a7f1a021b3d0261cb4979.ctex"]
+source_file="res://assets/goblet_tint.png"
+dest_files=["res://.godot/imported/goblet_tint.png-833855628acd67ed56003d2d89ce6e05.ctex"]
 
 [params]
 

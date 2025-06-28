@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blw5jt1gtw3sr"
-path="res://.godot/imported/goblet.png-44c0d7fcf75ed87d6e27463aa1d40114.ctex"
+uid="uid://d43l385dknaa"
+path="res://.godot/imported/scepter_tint.png-3cc79d07b96c401dbf7281dc2ae148fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goblet.png"
-dest_files=["res://.godot/imported/goblet.png-44c0d7fcf75ed87d6e27463aa1d40114.ctex"]
+source_file="res://assets/scepter_tint.png"
+dest_files=["res://.godot/imported/scepter_tint.png-3cc79d07b96c401dbf7281dc2ae148fc.ctex"]
 
 [params]
 

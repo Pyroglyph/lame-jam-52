@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbmwdb8i2lcye"
-path="res://.godot/imported/holyBoot.png-2c78a5fa52f035513e62f4410219ca03.ctex"
+uid="uid://ci2fb0na0odxy"
+path="res://.godot/imported/ring_tint.png-c9deae74d20d1ae41f9c00753fbae668.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/holyBoot.png"
-dest_files=["res://.godot/imported/holyBoot.png-2c78a5fa52f035513e62f4410219ca03.ctex"]
+source_file="res://assets/ring_tint.png"
+dest_files=["res://.godot/imported/ring_tint.png-c9deae74d20d1ae41f9c00753fbae668.ctex"]
 
 [params]
 

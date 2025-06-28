@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v7v6mbipim08"
-path="res://.godot/imported/Neckless2.png-3ae1fc58a3aa3beef15ae2c6735ab108.ctex"
+uid="uid://cbmwdb8i2lcye"
+path="res://.godot/imported/holyboot_tint.png-33b67c8ba6c661885b960344d1d0bd9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Neckless2.png"
-dest_files=["res://.godot/imported/Neckless2.png-3ae1fc58a3aa3beef15ae2c6735ab108.ctex"]
+source_file="res://assets/holyboot_tint.png"
+dest_files=["res://.godot/imported/holyboot_tint.png-33b67c8ba6c661885b960344d1d0bd9e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bndm8dfdelqfd"
-path="res://.godot/imported/secpter2.png-25df17df7d5f02d17155f00ae2233d24.ctex"
+uid="uid://dp5kxeqhb28ub"
+path="res://.godot/imported/vambrace.png-28d0e3fae95c47318aeebd4a5e56bf06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/secpter2.png"
-dest_files=["res://.godot/imported/secpter2.png-25df17df7d5f02d17155f00ae2233d24.ctex"]
+source_file="res://assets/vambrace.png"
+dest_files=["res://.godot/imported/vambrace.png-28d0e3fae95c47318aeebd4a5e56bf06.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bikxsaouu816s"
-path="res://.godot/imported/Crown.png-26ba06075f8cf86be92e61e30f804e6d.ctex"
+uid="uid://cc1xasdwmnp3v"
+path="res://.godot/imported/dagger_tint.png-a46f649eea490f8d16ab5b11520262c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Crown.png"
-dest_files=["res://.godot/imported/Crown.png-26ba06075f8cf86be92e61e30f804e6d.ctex"]
+source_file="res://assets/dagger_tint.png"
+dest_files=["res://.godot/imported/dagger_tint.png-a46f649eea490f8d16ab5b11520262c4.ctex"]
 
 [params]
 

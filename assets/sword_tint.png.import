@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yvrwdrqovjxa"
-path="res://.godot/imported/scroll2.png-25ffbdcacec3db173c8a6f08943da2c7.ctex"
+uid="uid://754nlw06dfcd"
+path="res://.godot/imported/sword_tint.png-afb7e522d9e3239435732bcba1833b18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scroll2.png"
-dest_files=["res://.godot/imported/scroll2.png-25ffbdcacec3db173c8a6f08943da2c7.ctex"]
+source_file="res://assets/sword_tint.png"
+dest_files=["res://.godot/imported/sword_tint.png-afb7e522d9e3239435732bcba1833b18.ctex"]
 
 [params]
 

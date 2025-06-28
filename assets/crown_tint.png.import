@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d43l385dknaa"
-path="res://.godot/imported/secpter.png-d8a6b9e5e998bc741f7b3243c50d907c.ctex"
+uid="uid://bikxsaouu816s"
+path="res://.godot/imported/crown_tint.png-300e91f11bc128b29659774d915ccc7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/secpter.png"
-dest_files=["res://.godot/imported/secpter.png-d8a6b9e5e998bc741f7b3243c50d907c.ctex"]
+source_file="res://assets/crown_tint.png"
+dest_files=["res://.godot/imported/crown_tint.png-300e91f11bc128b29659774d915ccc7f.ctex"]
 
 [params]
 
