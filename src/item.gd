@@ -5,15 +5,15 @@ class_name Item
 @export var base_value: int
 @export_enum("Bronze", "Silver", "Gold") var tier: int = Tier.BRONZE
 
-var is_grabbed = false
-var grab_offset = Vector2.ZERO
-var target_position = global_position
-var original_position = Vector2.ZERO
+var is_grabbed := false
+var grab_offset := Vector2.ZERO
+var target_position := Vector2.ZERO
+var original_position := Vector2.ZERO
 var original_grid_cells = []
 
 func get_value() -> int:
 	var multiplier = 1 + (tier as float * 0.8)
-	return int(floorf(base_value * multiplier))	
+	return int(floorf(base_value * multiplier))
 
 var is_cell = func(c): return c is Cell
 func get_grid_cells() -> Array[Cell]:
@@ -29,8 +29,10 @@ func on_press(_cell: Cell):
 	print("grabbed " + item_name)
 
 	is_grabbed = true
+	z_index = 1000
 	grab_offset = get_viewport().get_mouse_position() - global_position
 	original_position = global_position.round()
+	reparent($/root/Game)
 
 	original_grid_cells = []
 	# Iterate through grid cells and clear the reference if they contain this item
@@ -47,55 +49,102 @@ func _process(_delta: float) -> void:
 	
 	global_position = global_position.lerp(target_position, 0.2)
 
-	# null check is only required for development
-	if $Sprite2D:
-		match tier:
-			Tier.BRONZE:
-				$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
-			Tier.SILVER:
-				$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
-			Tier.GOLD:
-				$Sprite2D.modulate = Color(1, 1, 0) # Gold color
+	match tier:
+		Tier.BRONZE:
+			$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
+		Tier.SILVER:
+			$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
+		Tier.GOLD:
+			$Sprite2D.modulate = Color(1, 1, 0) # Gold color
+
+func intersects_with(global_rect: Rect2) -> bool:
+	# This only handles rectangles
+	var intersects := false
+	for cell: Cell in get_children().filter(is_cell):
+		var cell_collision_shape: CollisionShape2D = cell.get_node("Area2D/CollisionShape2D")
+		var cell_local_rect: Rect2 = cell_collision_shape.shape.get_rect()
+		# Transform the cell's local rectangle to global space
+		var cell_global_rect: Rect2 = cell_local_rect * cell.get_node("Area2D").global_transform
+
+		if cell_global_rect.intersects(global_rect):
+			intersects = true
+			break
+
+	return intersects
+
+func discard():
+	# discard area automatically handles new children, so no need to fiddle with positioning
+	reparent($/root/Game/DiscardArea)
+	is_grabbed = false
+	z_index = 0
 
 func on_release():
+	# first, determine if any of the cells are colliding with the discard area
+	var discard_local_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
+	var discard_global_rect: Rect2 = discard_local_rect * $/root/Game/DiscardArea.global_transform
+	if intersects_with(discard_global_rect):
+		discard()
+		return
+
+	# if we're not discarding it, check if its on the grid properly
+	print("Checking drop location")
 	var grid_cells = get_grid_cells()
-	var valid_position = true
 	var snap_target: Vector2 = Vector2.ZERO
 	var valid_grid_cells = []
-	for cell in get_children().filter(is_cell):
-		var is_valid_cell = false
+	var empty_cells := 0
+	var mergable_cells := 0
+	var merge_candidate: Item
+	var cells = get_children().filter(is_cell)
+	for cell in cells:
 		for grid_cell in grid_cells:
-			if grid_cell.is_empty():
-				var collider: CollisionShape2D = grid_cell.get_node("Area2D/CollisionShape2D")
-				if collider.shape is RectangleShape2D:
-					var rect = Rect2(grid_cell.global_position.round() - collider.shape.size * 0.5, collider.shape.size)
-					if rect.has_point(cell.global_position.round()):
-						is_valid_cell = true
+			var collider: CollisionShape2D = grid_cell.get_node("Area2D/CollisionShape2D")
+			var rect = Rect2(grid_cell.global_position.round() - collider.shape.size * 0.5, collider.shape.size)
+			if rect.has_point(cell.global_position.round()):
+				if grid_cell.is_empty():
+					empty_cells += 1
+					valid_grid_cells.append(grid_cell)
+					if cell.global_position.round() == global_position.round():
+						snap_target = grid_cell.global_position.round()
+					break
+				else:
+					var occupying_item: Item = grid_cell.contains
+					if tier != Tier.GOLD and occupying_item.item_name == item_name and occupying_item.tier == tier:
+						mergable_cells += 1
+						merge_candidate = occupying_item
 						valid_grid_cells.append(grid_cell)
-						if cell.global_position.round() == global_position.round():
-							snap_target = grid_cell.global_position.round()
 						break
-		if not is_valid_cell:
-			valid_position = false
-			break
-	
+
+	var is_mergable = mergable_cells == len(cells)
+	var valid_position = empty_cells == len(cells) or is_mergable
+
+	if is_mergable:
+		# all cells are mergable, so merge!
+		merge_candidate.tier += 1
+		
+		# TODO: spawn some kind of particle effect before destroying this
+		queue_free()
+		return
+
 	if valid_position:
 		# all of this items cells fall within the bounds of the grid, and on empty cells
 		print("released " + item_name)
 		is_grabbed = false
+		z_index = 0
 
 		for cell in valid_grid_cells:
 			cell.contains = self
 		
-		# for cell in original_grid_cells:
-		# 	cell.contains = null
-
 		if snap_target != Vector2.ZERO:
 			target_position = snap_target
 	else:
-		print("returning" + item_name + " to original position")
-		target_position = original_position
+		print("returning " + item_name + " to original position")
+		if discard_global_rect.has_point(original_position):
+			reparent($/root/Game/DiscardArea, true)
+		else:
+			target_position = original_position
+
 		is_grabbed = false
+		z_index = 0
 
 		for cell in original_grid_cells:
 			cell.contains = self
@@ -104,5 +153,21 @@ func on_release():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_released() and is_grabbed:
-		print("releasing " + item_name)
+		print("trying to release " + item_name)
 		on_release()
+
+func get_center_offset() -> Vector2:
+	var sprite = $Sprite2D
+
+	# Calculate bounding box from texture size
+	var size = sprite.texture.get_size()
+	var origin = sprite.global_position
+	if sprite.centered:
+		origin -= size / 2.0
+
+	var value = Rect2(origin, size).get_center() - global_position
+
+	print(name)
+	print(value)
+
+	return value
