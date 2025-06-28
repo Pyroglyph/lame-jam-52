@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=10 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://d3onrjn6ydtcq" path="res://scenes/items/goblet.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cqyx12pl6n80p" path="res://scenes/items/dagger.tscn" id="4_u5sy4"]
+[ext_resource type="FontFile" uid="uid://dwh88hp7prsrr" path="res://assets/alagard.ttf" id="8_gee14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(133, 122)
@@ -107,3 +108,11 @@ position = Vector2(144, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DiscardArea"]
 position = Vector2(266, 119)
 shape = SubResource("RectangleShape2D_p57ef")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 221.0
+offset_top = 3.0
+offset_right = 317.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_gee14")
+text = "Next Quest"
