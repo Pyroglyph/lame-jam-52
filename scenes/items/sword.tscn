@@ -14,17 +14,19 @@ base_value = 40
 is_item = true
 
 [node name="Cell2" parent="." instance=ExtResource("2_gj357")]
-position = Vector2(0, 32)
+position = Vector2(32, 0)
 is_item = true
 
 [node name="Cell3" parent="." instance=ExtResource("2_gj357")]
-position = Vector2(0, 64)
+position = Vector2(64, 0)
 is_item = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(32, 0.000106812)
+rotation = 1.57079
 texture = ExtResource("3_gj357")
 
 [node name="Sprite2DTint" type="Sprite2D" parent="."]
-position = Vector2(0, 32)
+position = Vector2(32, 0.000106812)
+rotation = 1.57079
 texture = ExtResource("3_l3uod")
