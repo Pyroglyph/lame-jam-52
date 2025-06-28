@@ -39,6 +39,8 @@ func give_new_items():
 
 	for item in new_items:
 		var new_item = item.instantiate()
+		# New items fly in from offscreen
+		new_item.global_position = Vector2(400, $DiscardArea.global_position.y)
 
 		# Add a 5% chance for an item to be rarer
 		if randi() % 20 == 0:
@@ -47,6 +49,8 @@ func give_new_items():
 		$DiscardArea.add_child(new_item)
 
 func next_quest():
-	$DiscardArea.discard_items()
-
-	give_new_items()
+	if ($DiscardArea.discard_items()):
+		var timer = get_tree().create_timer(0.2)
+		timer.timeout.connect(give_new_items)
+	else:
+		give_new_items()

@@ -29,6 +29,7 @@ func on_press(_cell: Cell):
 	print("grabbed " + item_name)
 
 	is_grabbed = true
+	z_index = 1000
 	grab_offset = get_viewport().get_mouse_position() - global_position
 	original_position = global_position.round()
 	reparent($/root/Game)
@@ -75,13 +76,14 @@ func intersects_with(global_rect: Rect2) -> bool:
 
 func on_release():
 	# first, determine if any of the cells are colliding with the discard area
-	var discard_local_rect = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
-	var discard_global_rect = discard_local_rect * $/root/Game/DiscardArea.global_transform
+	var discard_local_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
+	var discard_global_rect: Rect2 = discard_local_rect * $/root/Game/DiscardArea.global_transform
 	if intersects_with(discard_global_rect):
 		print("Dropped on discard area")
 		# discard area automatically handles new children
 		reparent($/root/Game/DiscardArea)
 		is_grabbed = false
+		z_index = 0
 		return
 
 	# if we're not discarding it, check if its on the grid properly
@@ -111,6 +113,7 @@ func on_release():
 		# all of this items cells fall within the bounds of the grid, and on empty cells
 		print("released " + item_name)
 		is_grabbed = false
+		z_index = 0
 
 		for cell in valid_grid_cells:
 			cell.contains = self
@@ -122,8 +125,13 @@ func on_release():
 			target_position = snap_target
 	else:
 		print("returning " + item_name + " to original position")
-		target_position = original_position
+		if discard_global_rect.has_point(original_position):
+			reparent($/root/Game/DiscardArea, true)
+		else:
+			target_position = original_position
+
 		is_grabbed = false
+		z_index = 0
 
 		for cell in original_grid_cells:
 			cell.contains = self
@@ -134,3 +142,19 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_released() and is_grabbed:
 		print("trying to release " + item_name)
 		on_release()
+
+func get_center_offset() -> Vector2:
+	var sprite = $Sprite2D
+
+	# Calculate bounding box from texture size
+	var size = sprite.texture.get_size()
+	var origin = sprite.global_position
+	if sprite.centered:
+		origin -= size / 2.0
+
+	var value = Rect2(origin, size).get_center() - global_position
+
+	print(name)
+	print(value)
+
+	return value

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cck8kukpkx6ws" path="res://src/discard_area.gd" id="11_dinhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
-size = Vector2(133, 122)
+size = Vector2(122, 122)
 
 [node name="Game" type="Node2D"]
 texture_filter = 1
@@ -110,10 +110,11 @@ position = Vector2(144, 48)
 position = Vector2(144, 16)
 
 [node name="DiscardArea" type="Area2D" parent="."]
-position = Vector2(266, 119)
+position = Vector2(258, 113)
 script = ExtResource("11_dinhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DiscardArea"]
+position = Vector2(1, 6)
 shape = SubResource("RectangleShape2D_p57ef")
 
 [node name="Button" type="Button" parent="."]
@@ -123,3 +124,5 @@ offset_right = 317.0
 offset_bottom = 34.0
 theme_override_fonts/font = ExtResource("8_gee14")
 text = "Next Quest"
+
+[connection signal="pressed" from="Button" to="." method="next_quest"]

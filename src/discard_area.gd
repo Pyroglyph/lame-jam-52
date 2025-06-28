@@ -18,27 +18,43 @@ func _notification(what: int) -> void:
 # Distribute items evenly
 func update_item_positions():
 	print("Updating item positions")
-	var items = get_discarded_items()
+	var items := get_discarded_items()
 
 	var rect = $CollisionShape2D.shape.size
 	const padding = 10
 
+	if len(items) == 1:
+		var offset := items[0].get_center_offset()
+		items[0].target_position = global_position - offset
+		return
+
 	for i in range(len(items)):
-		var angle = i * (360. / len(items))
-		var radius = min(rect.x - padding * 2, rect.y - padding * 2) / 3
+		var angle := i * (360. / len(items)) - 90
+		var radius: float = min(rect.x - padding, rect.y - padding) / 3
 
-		var position_x = cos(deg_to_rad(angle)) * radius + padding
-		var position_y = sin(deg_to_rad(angle)) * radius + padding
+		var position_x := cos(deg_to_rad(angle)) * radius
+		var position_y := sin(deg_to_rad(angle)) * radius
 
-		items[i].target_position = global_position + Vector2(position_x, position_y)
+		var offset := items[i].get_center_offset()
+		items[i].target_position = global_position + Vector2(position_x, position_y) - offset
 
-func discard_items():
-	for item in get_discarded_items():
+# If there are items to discard then it does so and returns true, if there are no items it returns false 
+func discard_items() -> bool:
+	# Get items before reparenting changes the children list
+	var items_to_discard = get_discarded_items()
+	if len(items_to_discard) == 0:
+		return false
+
+	for item in items_to_discard:
 		# Detach to avoid any race conditions
-		reparent($/root)
-		
-		# Animate them offscreen instead of just having them disappear 
-		item.target_position = item.global_position + Vector2(0, 1000)
-		
-		await get_tree().create_timer(0.5).timeout
-		item.queue_free()
+		item.reparent($/root, true)
+
+		# Animate them offscreen instead of just having them disappear
+		item.target_position = Vector2(item.global_position.x, 250)
+
+		var timer = get_tree().create_timer(0.2)
+		timer.timeout.connect(func():
+			item.queue_free()
+		)
+	
+	return true
