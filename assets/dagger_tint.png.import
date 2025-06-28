@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://43nkg88ksvtg"
-path="res://.godot/imported/Neckless.png-4a4dc0b5ac370618522193f3c199c9b0.ctex"
+uid="uid://cc1xasdwmnp3v"
+path="res://.godot/imported/dagger_tint.png-a46f649eea490f8d16ab5b11520262c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Neckless.png"
-dest_files=["res://.godot/imported/Neckless.png-4a4dc0b5ac370618522193f3c199c9b0.ctex"]
+source_file="res://assets/dagger_tint.png"
+dest_files=["res://.godot/imported/dagger_tint.png-a46f649eea490f8d16ab5b11520262c4.ctex"]
 
 [params]
 

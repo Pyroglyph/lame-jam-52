@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bps1a8curu1du"
-path="res://.godot/imported/Trinket.png-24342bed88de64ffecb66cd1ed06c04c.ctex"
+uid="uid://cewnota4fdqu4"
+path="res://.godot/imported/SmellyBoot1.png-8fe9ba44f49f8876e00027ccb9799d8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Trinket.png"
-dest_files=["res://.godot/imported/Trinket.png-24342bed88de64ffecb66cd1ed06c04c.ctex"]
+source_file="res://assets/SmellyBoot1.png"
+dest_files=["res://.godot/imported/SmellyBoot1.png-8fe9ba44f49f8876e00027ccb9799d8e.ctex"]
 
 [params]
 

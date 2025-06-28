@@ -51,11 +51,11 @@ func _process(_delta: float) -> void:
 
 	match tier:
 		Tier.BRONZE:
-			$Sprite2D.modulate = Color(1, 0.5, 0) # Bronze color
+			$Sprite2DTint.modulate = Color(1, 0.5, 0) # Bronze color
 		Tier.SILVER:
-			$Sprite2D.modulate = Color(0.75, 0.75, 0.75) # Silver color
+			$Sprite2DTint.modulate = Color(0.75, 0.75, 0.75) # Silver color
 		Tier.GOLD:
-			$Sprite2D.modulate = Color(1, 1, 0) # Gold color
+			$Sprite2DTint.modulate = Color(1, 1, 0) # Gold color
 
 func intersects_with(global_rect: Rect2) -> bool:
 	# This only handles rectangles
@@ -157,7 +157,9 @@ func _input(event: InputEvent) -> void:
 		on_release()
 
 func get_center_offset() -> Vector2:
-	var sprite = $Sprite2D
+	var sprite: Sprite2D = get_node_or_null("Sprite2D")
+	if not sprite:
+		sprite = $Sprite2DTint
 
 	# Calculate bounding box from texture size
 	var size = sprite.texture.get_size()

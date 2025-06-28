@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=18 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3onrjn6ydtcq" path="res://scenes/items/goblet.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cqyx12pl6n80p" path="res://scenes/items/dagger.tscn" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://pe4oi8f578bc" path="res://scenes/items/crown.tscn" id="5_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://jol80pseuel6" path="res://scenes/items/sword.tscn" id="5_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cg000hwsj0kil" path="res://scenes/items/necklace.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bj8hmfx4cfcfh" path="res://scenes/items/scepter.tscn" id="6_kvpfn"]
 [ext_resource type="FontFile" uid="uid://dwh88hp7prsrr" path="res://assets/alagard.ttf" id="8_gee14"]
@@ -27,7 +28,7 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Game" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_iywne")
-common_items = Array[PackedScene]([ExtResource("4_u5sy4"), ExtResource("3_p57ef"), ExtResource("2_iywne")])
+common_items = Array[PackedScene]([ExtResource("4_u5sy4"), ExtResource("3_p57ef"), ExtResource("2_iywne"), ExtResource("5_ir15t")])
 uncommon_items = Array[PackedScene]([ExtResource("5_vtaks"), ExtResource("6_kvpfn")])
 rare_items = Array[PackedScene]([ExtResource("5_0tnpc")])
 
@@ -92,6 +93,7 @@ anchors_preset = 0
 theme = SubResource("Theme_dinhu")
 
 [node name="NextQuestButton" type="Button" parent="UI"]
+layout_mode = 0
 offset_left = 272.0
 offset_top = 4.0
 offset_right = 316.0
@@ -99,6 +101,7 @@ offset_bottom = 27.0
 text = "Done"
 
 [node name="Score" type="Label" parent="UI"]
+layout_mode = 0
 offset_left = 242.0
 offset_top = 30.0
 offset_right = 316.0

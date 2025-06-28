@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci2fb0na0odxy"
-path="res://.godot/imported/ring_0.png-1acd41fd4b618a28bea493c8fdfaf0c3.ctex"
+uid="uid://bikxsaouu816s"
+path="res://.godot/imported/crown_tint.png-300e91f11bc128b29659774d915ccc7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ring_0.png"
-dest_files=["res://.godot/imported/ring_0.png-1acd41fd4b618a28bea493c8fdfaf0c3.ctex"]
+source_file="res://assets/crown_tint.png"
+dest_files=["res://.godot/imported/crown_tint.png-300e91f11bc128b29659774d915ccc7f.ctex"]
 
 [params]
 

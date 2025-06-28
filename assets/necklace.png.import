@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blw5jt1gtw3sr"
-path="res://.godot/imported/goblet.png-44c0d7fcf75ed87d6e27463aa1d40114.ctex"
+uid="uid://v7v6mbipim08"
+path="res://.godot/imported/necklace.png-a90a8a92f218e81bf37fd98a3b38f7e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goblet.png"
-dest_files=["res://.godot/imported/goblet.png-44c0d7fcf75ed87d6e27463aa1d40114.ctex"]
+source_file="res://assets/necklace.png"
+dest_files=["res://.godot/imported/necklace.png-a90a8a92f218e81bf37fd98a3b38f7e4.ctex"]
 
 [params]
 
