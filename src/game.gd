@@ -20,8 +20,6 @@ func _ready() -> void:
 	for item in rare_items:
 		all_items.append({"scene": item, "chance": 1})
 
-	$Overlay.next_day.connect(show_next_day)
-
 	show_next_lore()
 
 # Generates new items and places them into the discard area
@@ -69,20 +67,41 @@ func next_quest():
 func show_next_lore():
 	Sound.play("res://assets/audio/bag_move.ogg")
 
-	if day == len(lore):
-		# end of the game!
-		emit_signal("end")
-		return
-
 	# temporary instant-hide, replace with sliding animation later
 	$Bag.hide()
 	$UI.hide()
 
-	$Overlay.show_lore(lore[day])
+	if day == len(lore) - 1:
+		# end of the game!
+
+		# store highscore
+		var score = $/root/Game/UI/Score.score
+		# this stucks but i can't be bothered to make it better
+		var high_score := 0
+		if not FileAccess.file_exists("user://savegame.save"):
+			var save_file := FileAccess.open("user://savegame.save", FileAccess.WRITE)
+			save_file.store_32(score)
+			save_file.close()
+		else:
+			var save_file := FileAccess.open("user://savegame.save", FileAccess.READ)
+			high_score = save_file.get_32()
+			if not high_score:
+				high_score = 0
+			print("score: ", score)
+			print("high_score: ", high_score)
+			if score > high_score:
+				save_file.store_32(score)
+			save_file.close()
+
+		$LoreOverlay.show_lore(lore[day], true)
+		return
+
+	$LoreOverlay.show_lore(lore[day])
 
 func show_next_day():
+	Sound.play("res://assets/audio/bag_move.ogg")
 
-	$Overlay.hide()
+	$LoreOverlay.hide()
 
 	# TODO Change time of day / background - or maybe fade it in while the lore is showing?
 

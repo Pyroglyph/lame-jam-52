@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://chi4j7kfsadhr"]
+
+[ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="1_vndpy"]
+[ext_resource type="Script" uid="uid://dpqak2niuwmb8" path="res://src/lore_overlay.gd" id="2_4lju0"]
+[ext_resource type="Script" uid="uid://qlmv3v6qo2q1" path="res://src/rich_text_shadow.gd" id="3_x0i6y"]
+
+[node name="LoreOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_vndpy")
+script = ExtResource("2_4lju0")
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 172.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
+
+He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them.
+"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+
+[node name="TextShadow" type="RichTextLabel" parent="Text" node_paths=PackedStringArray("source")]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 305.0
+offset_bottom = 165.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
+
+He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them."
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+script = ExtResource("3_x0i6y")
+source = NodePath("..")
+
+[node name="ContinueMarker" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(261, 162)
+polygon = PackedVector2Array(37, 3, 43, 3, 42, -2, 51, 4, 43, 10, 43, 6, 36, 6)
+
+[node name="Shadow" type="Polygon2D" parent="ContinueMarker"]
+show_behind_parent = true
+position = Vector2(1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(37, 3, 43, 3, 42, -2, 51, 4, 43, 10, 43, 6, 36, 6)
