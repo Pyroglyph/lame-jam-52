@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_e1j6l"]
 script = ExtResource("9_264po")
-text = "The sight of the grand mountains is a sight for weary eyes. \"FOR GLORY AND GOLD!\" [color=#ff0]the Knight[/color] shouts, his words bellow out into the distance. 
+text = "The sight of the grand mountains is a sight for weary eyes. \"FOR GLORY AND GOLD!\" [color=#ff0]The Knight[/color] shouts, his words bellow out into the distance. 
 
 [color=#ff0]the Knight[/color] charges though the pass with sword in hand ready for battle."
 background = ExtResource("10_1kice")
