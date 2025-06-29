@@ -17,6 +17,12 @@ func show_lore(lore: Lore, is_final: bool = false):
 
 	current_lore_is_final = is_final
 
+	# change music
+	# TODO: Add a fade in/out transition
+	if $/root/Game/Ambience.stream != lore.ambience:
+		$/root/Game/Ambience.stream = lore.ambience
+		$/root/Game/Ambience.play()
+
 	# set new background
 	for child in $/root/Game/Background.get_children():
 		child.queue_free()
