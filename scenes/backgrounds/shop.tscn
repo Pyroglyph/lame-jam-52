@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqgtdjc33bhx4"]
+
+[ext_resource type="Texture2D" uid="uid://b4wyhgie4pvuw" path="res://assets/Background_Shop_floor.png" id="1_gon3j"]
+[ext_resource type="Texture2D" uid="uid://tqq3xntulp5l" path="res://assets/Background_Shop_tablecloth.png" id="2_h4a4m"]
+[ext_resource type="Texture2D" uid="uid://cjsllg3bavql4" path="res://assets/Background_Shop_tableedge.png" id="3_b73j3"]
+[ext_resource type="PackedScene" uid="uid://pe4oi8f578bc" path="res://scenes/items/crown.tscn" id="4_8xoqc"]
+[ext_resource type="PackedScene" uid="uid://cqyx12pl6n80p" path="res://scenes/items/dagger.tscn" id="5_6e0oe"]
+[ext_resource type="PackedScene" uid="uid://bj8hmfx4cfcfh" path="res://scenes/items/scepter.tscn" id="6_ollqr"]
+[ext_resource type="PackedScene" uid="uid://bu3xl85er855x" path="res://scenes/items/scroll.tscn" id="7_go6un"]
+[ext_resource type="PackedScene" uid="uid://jol80pseuel6" path="res://scenes/items/sword.tscn" id="8_8dalw"]
+
+[node name="ShopBackground" type="CanvasGroup"]
+
+[node name="BackgroundShopFloor" type="Sprite2D" parent="."]
+modulate = Color(0.54, 0.3528, 0.2592, 1)
+position = Vector2(160, 90)
+texture = ExtResource("1_gon3j")
+
+[node name="BackgroundShopTablecloth" type="Sprite2D" parent="."]
+modulate = Color(1, 0.876, 0.69, 1)
+position = Vector2(160, 90)
+texture = ExtResource("2_h4a4m")
+
+[node name="BackgroundShopTableedge" type="Sprite2D" parent="."]
+modulate = Color(0.74, 0.517507, 0.4144, 1)
+position = Vector2(160, 90)
+texture = ExtResource("3_b73j3")
+
+[node name="Crown" parent="." instance=ExtResource("4_8xoqc")]
+position = Vector2(47, 35)
+rotation = 0.221126
+tier = 2
+
+[node name="Dagger" parent="." instance=ExtResource("5_6e0oe")]
+position = Vector2(156, 122)
+rotation = -0.269623
+tier = 3
+
+[node name="Scepter" parent="." instance=ExtResource("6_ollqr")]
+position = Vector2(161, 23)
+rotation = -1.24441
+scale = Vector2(1.88805, 1.88805)
+script = null
+
+[node name="Scroll3" parent="." instance=ExtResource("7_go6un")]
+position = Vector2(238, 148)
+rotation = -1.49257
+scale = Vector2(1, 1)
+script = null
+
+[node name="Scroll2" parent="." instance=ExtResource("7_go6un")]
+position = Vector2(199, 151)
+rotation = -1.59108
+scale = Vector2(1, 1)
+script = null
+
+[node name="Scroll" parent="." instance=ExtResource("7_go6un")]
+position = Vector2(219, 140)
+rotation = -1.75893
+script = null
+
+[node name="Sword" parent="." instance=ExtResource("8_8dalw")]
+position = Vector2(58, 136)
+rotation = -0.572519
+scale = Vector2(1.51518, 1.51518)
+script = null
