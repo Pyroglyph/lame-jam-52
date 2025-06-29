@@ -1,49 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://e6jvkkdti2qi"]
+[gd_scene load_steps=9 format=3 uid="uid://e6jvkkdti2qi"]
 
 [ext_resource type="Texture2D" uid="uid://vsq4n6m3ayc3" path="res://assets/Background_Sky.png" id="1_scuue"]
 [ext_resource type="Texture2D" uid="uid://bw7v6abn5qhmi" path="res://assets/Background_Truks_furthest.png" id="2_ra2pk"]
 [ext_resource type="Texture2D" uid="uid://bqotiryim50t6" path="res://assets/Background_Truks_back.png" id="3_dnwf1"]
 [ext_resource type="Texture2D" uid="uid://dpgienus7fugw" path="res://assets/Background_Tress_back.png" id="4_8hj20"]
+[ext_resource type="Material" uid="uid://bh75py8784f0s" path="res://scenes/backgrounds/trees_rear_materal.tres" id="4_dnwf1"]
 [ext_resource type="Texture2D" uid="uid://dbmsja4vepw6" path="res://assets/Background_Truks_front.png" id="5_qjyew"]
 [ext_resource type="Texture2D" uid="uid://j6puck5of7wg" path="res://assets/Background_Tress_front.png" id="6_f6c76"]
 [ext_resource type="Texture2D" uid="uid://bfm0ekw04alu3" path="res://assets/Background_Grass.png" id="7_fa5wx"]
 
-[node name="EveningBackground" type="Node2D"]
+[node name="EveningBackground" type="CanvasGroup"]
+self_modulate = Color(1, 0.513726, 0.388235, 1)
 
 [node name="BackgroundSky" type="Sprite2D" parent="."]
-modulate = Color(1, 0.4365, 0.31, 1)
+modulate = Color(1, 0.771333, 0.72, 1)
 position = Vector2(160, 90)
 texture = ExtResource("1_scuue")
 
-[node name="Node" type="Node2D" parent="."]
-modulate = Color(1, 0.512, 0.39, 1)
-
-[node name="BackgroundTruksFurthest" type="Sprite2D" parent="Node"]
+[node name="BackgroundTruksFurthest" type="Sprite2D" parent="."]
 modulate = Color(0.41, 0.2501, 0.2501, 1)
 position = Vector2(160, 90)
 texture = ExtResource("2_ra2pk")
 
-[node name="BackgroundTruksBack" type="Sprite2D" parent="Node"]
+[node name="BackgroundTruksBack" type="Sprite2D" parent="."]
 modulate = Color(0.55, 0.39325, 0.3025, 1)
 position = Vector2(160, 90)
 texture = ExtResource("3_dnwf1")
 
-[node name="BackgroundTressBack" type="Sprite2D" parent="Node"]
+[node name="BackgroundTressBack" type="Sprite2D" parent="."]
 modulate = Color(0.426533, 0.56, 0.4144, 1)
+material = ExtResource("4_dnwf1")
 position = Vector2(160, 90)
 texture = ExtResource("4_8hj20")
 
-[node name="BackgroundTruksFront" type="Sprite2D" parent="Node"]
+[node name="BackgroundTruksFront" type="Sprite2D" parent="."]
 modulate = Color(0.64, 0.552, 0.48, 1)
 position = Vector2(160, 90)
 texture = ExtResource("5_qjyew")
 
-[node name="BackgroundTressFront" type="Sprite2D" parent="Node"]
+[node name="BackgroundTressFront" type="Sprite2D" parent="."]
 modulate = Color(0.495083, 0.65, 0.481, 1)
 position = Vector2(160, 90)
 texture = ExtResource("6_f6c76")
 
-[node name="BackgroundGrass" type="Sprite2D" parent="Node"]
+[node name="BackgroundGrass" type="Sprite2D" parent="."]
 modulate = Color(0.1254, 0.66, 0.47289, 1)
 position = Vector2(160, 90)
 texture = ExtResource("7_fa5wx")
