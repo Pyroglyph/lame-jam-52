@@ -34,6 +34,8 @@ func show_lore(lore: Lore, is_final: bool = false):
 	show_next_character()
 
 func with_tidbits(text: String) -> String:
+	# disabled for now
+	return text
 	# tidbits are just extra lines to integrate lore with ingame events
 	var tidbits = []
 	if $/root/Game/UI/Score.score > 300:
