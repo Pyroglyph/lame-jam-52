@@ -182,4 +182,6 @@ func get_center_offset() -> Vector2:
 
 func upgrade():
 	tier += 1
-	Sound.play("res://assets/audio/merge.ogg")
+	Sound.play("res://assets/audio/bag_place" + str(randi() % 2) + ".ogg")
+	get_tree().create_timer(0.05).timeout.connect(func(): Sound.play("res://assets/audio/merge.ogg"))
+	
