@@ -86,11 +86,9 @@ func show_next_lore():
 		else:
 			var save_file := FileAccess.open("user://savegame.save", FileAccess.READ)
 			high_score = save_file.get_32()
-			if not high_score:
-				high_score = 0
-			print("score: ", score)
-			print("high_score: ", high_score)
+			save_file.close()
 			if score > high_score:
+				save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 				save_file.store_32(score)
 			save_file.close()
 
