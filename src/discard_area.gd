@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var target_position: Vector2 = global_position
+@onready var initial_position: Vector2 = Vector2(258.0, 113)
 
 func get_discarded_items() -> Array[Item]:
 	var items: Array[Item] = []
@@ -59,8 +60,8 @@ func _process(_delta: float) -> void:
 	update_item_positions()
 
 func begin_hiding():
-	target_position = global_position + Vector2(120, 0)
+	target_position = initial_position + Vector2(180, 0)
 
 func begin_showing():
 	show()
-	target_position = global_position - Vector2(120, 0)
+	target_position = initial_position
