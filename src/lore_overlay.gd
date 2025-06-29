@@ -69,7 +69,7 @@ func show_next_character():
 
 func _input(event: InputEvent) -> void:
 	if visible:
-		if (event is InputEventKey and event.keycode == KEY_SPACE) or (event is InputEventMouseButton and event.pressed):
+		if (event is InputEventKey and event.is_pressed() and event.keycode == KEY_SPACE) or (event is InputEventMouseButton and event.is_released()):
 			if $Text.visible_ratio >= 1:
 				# there is no next day if this is the final one
 				if not current_lore_is_final:
