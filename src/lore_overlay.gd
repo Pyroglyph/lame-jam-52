@@ -12,8 +12,8 @@ var current_lore_is_final: bool = false
 func show_lore(lore: Lore, is_final: bool = false):
 	$ContinueMarker.hide()
 	show()
-	$Text.visible_characters = 0
 	delay = slow_delay
+	$Text.visible_ratio = 0.
 
 	current_lore_is_final = is_final
 
@@ -59,9 +59,7 @@ func with_score(text: String) -> String:
 	return text + "\n\n" + "Your bag is worth: " + str($/root/Game/UI/Score.score) + "\n" + "High score: " + str(high_score)
 
 func show_next_character():
-	$Text.visible_characters += 1
-
-	if $Text.visible_ratio >= 1:
+	if $Text.visible_ratio >= 1.:
 		if current_lore_is_final:
 			$PlayAgainButton.show()
 			$ExitButton.show()
@@ -69,7 +67,8 @@ func show_next_character():
 			# fully shown, wait a couple of seconds and then show the continue mark
 			var timer = get_tree().create_timer(1)
 			timer.timeout.connect(func(): $ContinueMarker.show())
-	else:	
+	else:
+		$Text.visible_characters += 1
 		var timer = get_tree().create_timer(delay)
 		timer.timeout.connect(show_next_character)
 
@@ -86,8 +85,12 @@ func _input(event: InputEvent) -> void:
 				skip_animation()
 
 func skip_animation():
-	print("skipping animation")
-	delay = fast_delay
+	if delay != fast_delay:
+		# speed up
+		delay = fast_delay
+	else:
+		# actually skip
+		$Text.visible_ratio = 1.
 
 # seems weird to have these buttons in the lore viewer, but its convenient so ehhhh
 

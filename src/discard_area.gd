@@ -20,7 +20,6 @@ func _notification(what: int) -> void:
 
 # Distribute items evenly
 func update_item_positions():
-	print("Updating item positions")
 	var items := get_discarded_items()
 
 	var rect = $CollisionShape2D.shape.size
