@@ -86,7 +86,7 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_pl11u"]
 script = ExtResource("9_264po")
-text = "You suddenly bump into [color=#ff0]the Knight’s[/color] back - he's stopped dead in his tracks.
+text = "You suddenly bump into [color=#ff0]the Knight's[/color] back - he's stopped dead in his tracks.
 Peering past, you see the body of a young adventurer, fallen to frostbite. Their gear still lies beside them, untouched.
 
 [color=#ff0]The Knight[/color] removes his helmet, says a few words, and you move on."
