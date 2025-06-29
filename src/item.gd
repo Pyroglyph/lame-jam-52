@@ -3,7 +3,7 @@ class_name Item
 
 @export var item_name := "Item"
 @export var base_value: int
-@export_enum("Bronze", "Silver", "Gold") var tier: int = Tier.BRONZE
+@export_enum("Bronze", "Silver", "Gold", "Mithril") var tier: int = Tier.BRONZE
 
 var is_grabbed := false
 var grab_offset := Vector2.ZERO
@@ -51,11 +51,13 @@ func _process(_delta: float) -> void:
 
 	match tier:
 		Tier.BRONZE:
-			$Sprite2DTint.modulate = Color(1, 0.5, 0) # Bronze color
+			$Sprite2DTint.modulate = Color(1, 0.5, 0)
 		Tier.SILVER:
-			$Sprite2DTint.modulate = Color(0.75, 0.75, 0.75) # Silver color
+			$Sprite2DTint.modulate = Color(0.75, 0.75, 0.75)
 		Tier.GOLD:
-			$Sprite2DTint.modulate = Color(1, 1, 0) # Gold color
+			$Sprite2DTint.modulate = Color(1, 1, 0)
+		Tier.MITHRIL:
+			$Sprite2DTint.modulate = Color(0.5, 0.15, 1.0)
 
 func intersects_with(global_rect: Rect2) -> bool:
 	# This only handles rectangles
