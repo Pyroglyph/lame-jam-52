@@ -49,6 +49,7 @@ func give_new_items():
 		$DiscardArea.add_child(new_item)
 
 func next_quest():
+	Sound.play("res://assets/audio/thump" + str(randi() % 3) + ".wav")
 	if ($DiscardArea.discard_items()):
 		var timer = get_tree().create_timer(0.2)
 		timer.timeout.connect(give_new_items)

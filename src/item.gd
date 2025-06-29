@@ -83,6 +83,7 @@ func on_release():
 	var discard_local_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
 	var discard_global_rect: Rect2 = discard_local_rect * $/root/Game/DiscardArea.global_transform
 	if intersects_with(discard_global_rect):
+		Sound.play("res://assets/audio/cloth_impact.ogg")
 		discard()
 		return
 
@@ -119,8 +120,8 @@ func on_release():
 
 	if is_mergable:
 		# all cells are mergable, so merge!
-		merge_candidate.tier += 1
-		
+		merge_candidate.upgrade()
+
 		# TODO: spawn some kind of particle effect before destroying this
 		queue_free()
 		return
@@ -136,6 +137,8 @@ func on_release():
 		
 		if snap_target != Vector2.ZERO:
 			target_position = snap_target
+
+		Sound.play("res://assets/audio/bag_place" + str(randi() % 2) + ".ogg")
 	else:
 		print("returning " + item_name + " to original position")
 		if discard_global_rect.has_point(original_position):
@@ -149,6 +152,8 @@ func on_release():
 		for cell in original_grid_cells:
 			cell.contains = self
 		original_grid_cells = []
+
+		Sound.play("res://assets/audio/whoosh" + str(randi() % 3) + ".wav")
 
 
 func _input(event: InputEvent) -> void:
@@ -169,7 +174,8 @@ func get_center_offset() -> Vector2:
 
 	var value = Rect2(origin, size).get_center() - global_position
 
-	print(name)
-	print(value)
-
 	return value
+
+func upgrade():
+	tier += 1
+	Sound.play("res://assets/audio/merge.ogg")
