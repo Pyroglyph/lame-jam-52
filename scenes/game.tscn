@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=31 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://36ay4vwsrg3g" path="res://assets/bg-temp.png" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bu3xl85er855x" path="res://scenes/items/scroll.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://ddshwma8lykn3" path="res://scenes/cell.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://d3onrjn6ydtcq" path="res://scenes/items/goblet.tscn" id="3_p57ef"]
@@ -12,8 +11,53 @@
 [ext_resource type="PackedScene" uid="uid://cg000hwsj0kil" path="res://scenes/items/necklace.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bj8hmfx4cfcfh" path="res://scenes/items/scepter.tscn" id="6_kvpfn"]
 [ext_resource type="FontFile" uid="uid://dwh88hp7prsrr" path="res://assets/alagard.ttf" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://rkyc5m7d0dm4" path="res://assets/Background_Sky.png" id="9_1kice"]
+[ext_resource type="Texture2D" uid="uid://cin8r63lqni6n" path="res://assets/Background_Tress_back.png" id="10_5newe"]
+[ext_resource type="Texture2D" uid="uid://be1ric26sca02" path="res://assets/Background_Tress_front.png" id="11_37s47"]
 [ext_resource type="Script" uid="uid://cck8kukpkx6ws" path="res://src/discard_area.gd" id="11_dinhu"]
+[ext_resource type="Texture2D" uid="uid://b0phny0bolygq" path="res://assets/Background_Truks_furthest.png" id="12_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://c0i3nb864xemx" path="res://assets/Background_Truks_back.png" id="13_e1j6l"]
 [ext_resource type="Script" uid="uid://b1tg51aa1xrvc" path="res://src/score_tracker.gd" id="13_kvuet"]
+[ext_resource type="Shader" uid="uid://bosgddfmrqk63" path="res://src/sway.gdshader" id="14_5newe"]
+[ext_resource type="Texture2D" uid="uid://e3vvrbcc6yst" path="res://assets/Background_Truks_front.png" id="14_pl11u"]
+[ext_resource type="Texture2D" uid="uid://b8rl21b7cxywd" path="res://assets/Background_Grass.png" id="15_5newe"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5newe"]
+seed = 1
+frequency = 0.004
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bt5mj"]
+seamless = true
+noise = SubResource("FastNoiseLite_5newe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5newe"]
+shader = ExtResource("14_5newe")
+shader_parameter/modulate_color = Color(0.427451, 0.560784, 0.415686, 1)
+shader_parameter/render_noise = false
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_bt5mj")
+shader_parameter/amplitude = 0.1
+shader_parameter/time_scale = 0.02
+shader_parameter/noise_scale = 0.005
+shader_parameter/rotation_strength = 0.1
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e1j6l"]
+frequency = 0.004
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_37s47"]
+seamless = true
+noise = SubResource("FastNoiseLite_e1j6l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt5mj"]
+shader = ExtResource("14_5newe")
+shader_parameter/modulate_color = Color(0.494118, 0.65098, 0.482353, 1)
+shader_parameter/render_noise = false
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_37s47")
+shader_parameter/amplitude = 0.2
+shader_parameter/time_scale = 0.02
+shader_parameter/noise_scale = 0.005
+shader_parameter/rotation_strength = 0.1
+shader_parameter/rotation_pivot = Vector2(0.5, 1.289)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(122, 122)
@@ -32,9 +76,126 @@ common_items = Array[PackedScene]([ExtResource("4_u5sy4"), ExtResource("3_p57ef"
 uncommon_items = Array[PackedScene]([ExtResource("5_vtaks"), ExtResource("6_kvpfn")])
 rare_items = Array[PackedScene]([ExtResource("5_0tnpc")])
 
-[node name="temp bg" type="Sprite2D" parent="."]
-texture = ExtResource("1_lnu2h")
-centered = false
+[node name="DayBackground" type="Node2D" parent="."]
+
+[node name="BackgroundSky" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.57, 0.8925, 1, 1)
+position = Vector2(160, 90)
+texture = ExtResource("9_1kice")
+
+[node name="BackgroundTruksFurthest" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.41, 0.2501, 0.2501, 1)
+position = Vector2(160, 90)
+texture = ExtResource("12_bt5mj")
+
+[node name="BackgroundTruksBack" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.55, 0.39325, 0.3025, 1)
+position = Vector2(160, 90)
+texture = ExtResource("13_e1j6l")
+
+[node name="BackgroundTressBack" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.426533, 0.56, 0.4144, 1)
+material = SubResource("ShaderMaterial_5newe")
+position = Vector2(160, 90)
+texture = ExtResource("10_5newe")
+
+[node name="BackgroundTruksFront" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.64, 0.552, 0.48, 1)
+position = Vector2(160, 90)
+texture = ExtResource("14_pl11u")
+
+[node name="BackgroundTressFront" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.495083, 0.65, 0.481, 1)
+material = SubResource("ShaderMaterial_bt5mj")
+position = Vector2(160, 90)
+texture = ExtResource("11_37s47")
+
+[node name="BackgroundGrass" type="Sprite2D" parent="DayBackground"]
+modulate = Color(0.1254, 0.66, 0.47289, 1)
+position = Vector2(160, 90)
+texture = ExtResource("15_5newe")
+
+[node name="EveningBackground" type="Node2D" parent="."]
+visible = false
+
+[node name="BackgroundSky" type="Sprite2D" parent="EveningBackground"]
+modulate = Color(1, 0.4365, 0.31, 1)
+position = Vector2(160, 90)
+texture = ExtResource("9_1kice")
+
+[node name="Node" type="Node2D" parent="EveningBackground"]
+modulate = Color(1, 0.512, 0.39, 1)
+
+[node name="BackgroundTruksFurthest" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.41, 0.2501, 0.2501, 1)
+position = Vector2(160, 90)
+texture = ExtResource("12_bt5mj")
+
+[node name="BackgroundTruksBack" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.55, 0.39325, 0.3025, 1)
+position = Vector2(160, 90)
+texture = ExtResource("13_e1j6l")
+
+[node name="BackgroundTressBack" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.426533, 0.56, 0.4144, 1)
+position = Vector2(160, 90)
+texture = ExtResource("10_5newe")
+
+[node name="BackgroundTruksFront" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.64, 0.552, 0.48, 1)
+position = Vector2(160, 90)
+texture = ExtResource("14_pl11u")
+
+[node name="BackgroundTressFront" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.495083, 0.65, 0.481, 1)
+position = Vector2(160, 90)
+texture = ExtResource("11_37s47")
+
+[node name="BackgroundGrass" type="Sprite2D" parent="EveningBackground/Node"]
+modulate = Color(0.1254, 0.66, 0.47289, 1)
+position = Vector2(160, 90)
+texture = ExtResource("15_5newe")
+
+[node name="NightBackground" type="Node2D" parent="."]
+visible = false
+
+[node name="BackgroundSky" type="Sprite2D" parent="NightBackground"]
+modulate = Color(0.139567, 0.126, 0.2, 1)
+position = Vector2(160, 90)
+texture = ExtResource("9_1kice")
+
+[node name="Node" type="Node2D" parent="NightBackground"]
+modulate = Color(0.33705, 0.273, 0.7, 1)
+
+[node name="BackgroundTruksFurthest" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.41, 0.2501, 0.2501, 1)
+position = Vector2(160, 90)
+texture = ExtResource("12_bt5mj")
+
+[node name="BackgroundTruksBack" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.55, 0.39325, 0.3025, 1)
+position = Vector2(160, 90)
+texture = ExtResource("13_e1j6l")
+
+[node name="BackgroundTressBack" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.426533, 0.56, 0.4144, 1)
+position = Vector2(160, 90)
+texture = ExtResource("10_5newe")
+
+[node name="BackgroundTruksFront" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.64, 0.552, 0.48, 1)
+position = Vector2(160, 90)
+texture = ExtResource("14_pl11u")
+
+[node name="BackgroundTressFront" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.495083, 0.65, 0.481, 1)
+position = Vector2(160, 90)
+texture = ExtResource("11_37s47")
+
+[node name="BackgroundGrass" type="Sprite2D" parent="NightBackground/Node"]
+modulate = Color(0.1254, 0.66, 0.47289, 1)
+position = Vector2(160, 90)
+texture = ExtResource("15_5newe")
 
 [node name="Bag_ClothTM" type="Sprite2D" parent="."]
 texture = ExtResource("1_lbhrr")
