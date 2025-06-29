@@ -8,7 +8,7 @@
 [node name="Necklace" type="Node2D"]
 script = ExtResource("1_1lxk3")
 item_name = "Necklace"
-base_value = 45
+base_value = 40
 metadata/_custom_type_script = "uid://bqxond7ea3wk5"
 
 [node name="Cell1" parent="." instance=ExtResource("2_qvm4r")]
