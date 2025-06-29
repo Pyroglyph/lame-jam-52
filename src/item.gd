@@ -111,7 +111,7 @@ func on_release():
 					break
 				else:
 					var occupying_item: Item = grid_cell.contains
-					if tier != Tier.GOLD and occupying_item.item_name == item_name and occupying_item.tier == tier:
+					if tier != Tier.MITHRIL and occupying_item.item_name == item_name and occupying_item.tier == tier:
 						mergable_cells += 1
 						merge_candidate = occupying_item
 						valid_grid_cells.append(grid_cell)
