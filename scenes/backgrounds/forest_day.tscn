@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqqytu5vdcuop"]
+[gd_scene load_steps=13 format=3 uid="uid://dqqytu5vdcuop"]
 
 [ext_resource type="Texture2D" uid="uid://vsq4n6m3ayc3" path="res://assets/Background_Sky.png" id="1_71aug"]
 [ext_resource type="Texture2D" uid="uid://bw7v6abn5qhmi" path="res://assets/Background_Truks_furthest.png" id="2_eofg0"]
+[ext_resource type="Texture2D" uid="uid://brf6gvheo2b8d" path="res://assets/Background_Mountain.png" id="2_qe86i"]
 [ext_resource type="Texture2D" uid="uid://bqotiryim50t6" path="res://assets/Background_Truks_back.png" id="3_j4eyn"]
+[ext_resource type="Texture2D" uid="uid://0jdxav8vpcyc" path="res://assets/Background_snow.png" id="3_vh1ce"]
 [ext_resource type="Material" uid="uid://bh75py8784f0s" path="res://scenes/backgrounds/trees_rear_materal.tres" id="4_eofg0"]
+[ext_resource type="Texture2D" uid="uid://6akjmul18iip" path="res://assets/Background_clouds.png" id="4_px0rs"]
 [ext_resource type="Texture2D" uid="uid://dpgienus7fugw" path="res://assets/Background_Tress_back.png" id="5_yufsy"]
 [ext_resource type="Texture2D" uid="uid://dbmsja4vepw6" path="res://assets/Background_Truks_front.png" id="6_0pbmk"]
 [ext_resource type="Material" uid="uid://cwcntadjwss23" path="res://scenes/backgrounds/trees_front_materal.tres" id="7_j4eyn"]
@@ -16,6 +19,20 @@
 modulate = Color(0.57, 0.8925, 1, 1)
 position = Vector2(160, 90)
 texture = ExtResource("1_71aug")
+
+[node name="BackgroundMountain" type="Sprite2D" parent="."]
+modulate = Color(0.754761, 0.752832, 0.856537, 1)
+position = Vector2(160, 32)
+texture = ExtResource("2_qe86i")
+
+[node name="BackgroundSnow" type="Sprite2D" parent="."]
+position = Vector2(160, 32)
+texture = ExtResource("3_vh1ce")
+
+[node name="BackgroundClouds" type="Sprite2D" parent="."]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(160, 90)
+texture = ExtResource("4_px0rs")
 
 [node name="BackgroundTruksFurthest" type="Sprite2D" parent="."]
 modulate = Color(0.41, 0.2501, 0.2501, 1)

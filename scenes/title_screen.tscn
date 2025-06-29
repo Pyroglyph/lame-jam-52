@@ -1,0 +1,138 @@
+[gd_scene load_steps=16 format=3 uid="uid://b1vosguphy1dm"]
+
+[ext_resource type="Script" uid="uid://cbjcgbosybnq4" path="res://src/title_screen.gd" id="1_q7w76"]
+[ext_resource type="Texture2D" uid="uid://vsq4n6m3ayc3" path="res://assets/Background_Sky.png" id="2_wot2p"]
+[ext_resource type="Texture2D" uid="uid://brf6gvheo2b8d" path="res://assets/Background_Mountain.png" id="3_kvwfe"]
+[ext_resource type="Texture2D" uid="uid://0jdxav8vpcyc" path="res://assets/Background_snow.png" id="4_l4tom"]
+[ext_resource type="Texture2D" uid="uid://6akjmul18iip" path="res://assets/Background_clouds.png" id="5_y8ura"]
+[ext_resource type="Texture2D" uid="uid://bw7v6abn5qhmi" path="res://assets/Background_Truks_furthest.png" id="6_aav61"]
+[ext_resource type="Texture2D" uid="uid://bqotiryim50t6" path="res://assets/Background_Truks_back.png" id="7_a64np"]
+[ext_resource type="Material" uid="uid://bh75py8784f0s" path="res://scenes/backgrounds/trees_rear_materal.tres" id="8_g2tdu"]
+[ext_resource type="Texture2D" uid="uid://dpgienus7fugw" path="res://assets/Background_Tress_back.png" id="9_7yan6"]
+[ext_resource type="Texture2D" uid="uid://dbmsja4vepw6" path="res://assets/Background_Truks_front.png" id="10_4h4vs"]
+[ext_resource type="Material" uid="uid://cwcntadjwss23" path="res://scenes/backgrounds/trees_front_materal.tres" id="11_fd0ao"]
+[ext_resource type="Texture2D" uid="uid://j6puck5of7wg" path="res://assets/Background_Tress_front.png" id="12_g3bb0"]
+[ext_resource type="Texture2D" uid="uid://bfm0ekw04alu3" path="res://assets/Background_Grass.png" id="13_4crdw"]
+[ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="14_r38mt"]
+[ext_resource type="Script" uid="uid://qlmv3v6qo2q1" path="res://src/rich_text_shadow.gd" id="15_m6xo1"]
+
+[node name="TitleScreen" type="CanvasGroup"]
+script = ExtResource("1_q7w76")
+
+[node name="BackgroundSky" type="Sprite2D" parent="."]
+modulate = Color(0.57, 0.8925, 1, 1)
+position = Vector2(160, 90)
+texture = ExtResource("2_wot2p")
+
+[node name="BackgroundMountain" type="Sprite2D" parent="."]
+modulate = Color(0.754761, 0.752832, 0.856537, 1)
+position = Vector2(160, 32)
+texture = ExtResource("3_kvwfe")
+
+[node name="BackgroundSnow" type="Sprite2D" parent="."]
+position = Vector2(160, 32)
+texture = ExtResource("4_l4tom")
+
+[node name="BackgroundClouds" type="Sprite2D" parent="."]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(160, 90)
+texture = ExtResource("5_y8ura")
+
+[node name="BackgroundTruksFurthest" type="Sprite2D" parent="."]
+modulate = Color(0.41, 0.2501, 0.2501, 1)
+position = Vector2(160, 90)
+texture = ExtResource("6_aav61")
+
+[node name="BackgroundTruksBack" type="Sprite2D" parent="."]
+modulate = Color(0.55, 0.39325, 0.3025, 1)
+position = Vector2(160, 90)
+texture = ExtResource("7_a64np")
+
+[node name="BackgroundTressBack" type="Sprite2D" parent="."]
+modulate = Color(0.426533, 0.56, 0.4144, 1)
+material = ExtResource("8_g2tdu")
+position = Vector2(160, 90)
+texture = ExtResource("9_7yan6")
+
+[node name="BackgroundTruksFront" type="Sprite2D" parent="."]
+modulate = Color(0.64, 0.552, 0.48, 1)
+position = Vector2(160, 90)
+texture = ExtResource("10_4h4vs")
+
+[node name="BackgroundTressFront" type="Sprite2D" parent="."]
+modulate = Color(0.495083, 0.65, 0.481, 1)
+material = ExtResource("11_fd0ao")
+position = Vector2(160, 90)
+texture = ExtResource("12_g3bb0")
+
+[node name="BackgroundGrass" type="Sprite2D" parent="."]
+modulate = Color(0.1254, 0.66, 0.47289, 1)
+position = Vector2(160, 90)
+texture = ExtResource("13_4crdw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+theme = ExtResource("14_r38mt")
+
+[node name="Text" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 172.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Knight's Burden"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+
+[node name="TextShadow" type="RichTextLabel" parent="Control/Text" node_paths=PackedStringArray("source")]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 2.0
+offset_right = 306.0
+offset_bottom = 164.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Knight's Burden"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+script = ExtResource("15_m6xo1")
+source = NodePath("..")
+
+[node name="TextShadow2" type="RichTextLabel" parent="Control/Text" node_paths=PackedStringArray("source")]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 2.0
+offset_right = 304.0
+offset_bottom = 166.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Knight's Burden"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+script = ExtResource("15_m6xo1")
+source = NodePath("..")

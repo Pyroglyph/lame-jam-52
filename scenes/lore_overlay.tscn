@@ -19,10 +19,6 @@ offset_right = 312.0
 offset_bottom = 172.0
 mouse_filter = 2
 bbcode_enabled = true
-text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
-
-He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them.
-"
 scroll_active = false
 shortcut_keys_enabled = false
 horizontal_alignment = 1
@@ -41,9 +37,6 @@ offset_right = 305.0
 offset_bottom = 165.0
 mouse_filter = 2
 bbcode_enabled = true
-text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
-
-He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them."
 scroll_active = false
 shortcut_keys_enabled = false
 horizontal_alignment = 1
@@ -63,9 +56,6 @@ offset_right = 304.0
 offset_bottom = 165.0
 mouse_filter = 2
 bbcode_enabled = true
-text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
-
-He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them."
 scroll_active = false
 shortcut_keys_enabled = false
 horizontal_alignment = 1
