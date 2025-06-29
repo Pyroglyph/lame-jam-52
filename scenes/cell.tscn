@@ -2,20 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://clno8ha7allag" path="res://assets/cell.png" id="1_yh0nt"]
 [ext_resource type="Script" uid="uid://df1hworj25jcb" path="res://src/cell.gd" id="2_gwrgs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwrgs"]
-size = Vector2(32, 32)
+[ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="3_nm02e"]
 
 [node name="Cell" type="Node2D"]
 modulate = Color(1, 1, 1, 0.247059)
 script = ExtResource("2_gwrgs")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_gwrgs")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yh0nt")
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[node name="Collider" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme = ExtResource("3_nm02e")
+
+[connection signal="gui_input" from="Collider" to="." method="_on_gui_input"]

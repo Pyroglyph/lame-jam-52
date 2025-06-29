@@ -72,6 +72,7 @@ func show_next_lore():
 	if day == len(lore):
 		# end of the game!
 		emit_signal("end")
+		return
 
 	# temporary instant-hide, replace with sliding animation later
 	$Bag.hide()

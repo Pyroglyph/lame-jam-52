@@ -63,12 +63,11 @@ func intersects_with(global_rect: Rect2) -> bool:
 	# This only handles rectangles
 	var intersects := false
 	for cell: Cell in get_children().filter(is_cell):
-		var cell_collision_shape: CollisionShape2D = cell.get_node("Area2D/CollisionShape2D")
-		var cell_local_rect: Rect2 = cell_collision_shape.shape.get_rect()
+		var cell_rect: Rect2 = (cell.get_node("Sprite2D") as Sprite2D).get_rect()
 		# Transform the cell's local rectangle to global space
-		var cell_global_rect: Rect2 = cell_local_rect * cell.get_node("Area2D").global_transform
-
-		if cell_global_rect.intersects(global_rect):
+		cell_rect.position = cell.to_global(cell_rect.position)
+		
+		if cell_rect.intersects(global_rect):
 			intersects = true
 			break
 
@@ -82,9 +81,9 @@ func discard():
 
 func on_release():
 	# first, determine if any of the cells are colliding with the discard area
-	var discard_local_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
-	var discard_global_rect: Rect2 = discard_local_rect * $/root/Game/DiscardArea.global_transform
-	if intersects_with(discard_global_rect):
+	var discard_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
+	discard_rect.position = $/root/Game/DiscardArea.to_global(discard_rect.position)
+	if intersects_with(discard_rect):
 		Sound.play("res://assets/audio/cloth_impact.ogg")
 		discard()
 		return
@@ -99,10 +98,11 @@ func on_release():
 	var merge_candidate: Item
 	var cells = get_children().filter(is_cell)
 	for cell in cells:
-		for grid_cell in grid_cells:
-			var collider: CollisionShape2D = grid_cell.get_node("Area2D/CollisionShape2D")
-			var rect = Rect2(grid_cell.global_position.round() - collider.shape.size * 0.5, collider.shape.size)
-			if rect.has_point(cell.global_position.round()):
+		for grid_cell: Cell in grid_cells:
+			var grid_cell_rect: Rect2 = (grid_cell.get_node("Sprite2D") as Sprite2D).get_rect()
+			# Transform the cell's local rectangle to global space
+			grid_cell_rect.position = grid_cell.to_global(grid_cell_rect.position)
+			if grid_cell_rect.has_point(cell.global_position.round()):
 				if grid_cell.is_empty():
 					empty_cells += 1
 					valid_grid_cells.append(grid_cell)
@@ -145,7 +145,7 @@ func on_release():
 		reparent($/root/Game/Bag, true)
 	else:
 		print("returning " + item_name + " to original position")
-		if discard_global_rect.has_point(original_position):
+		if discard_rect.has_point(original_position):
 			reparent($/root/Game/DiscardArea, true)
 		else:
 			target_position = original_position

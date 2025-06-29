@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cck8kukpkx6ws" path="res://src/discard_area.gd" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b6dtn6mmayd5w" path="res://scenes/backgrounds/forest_night.tscn" id="12_37s47"]
 [ext_resource type="Script" uid="uid://b1tg51aa1xrvc" path="res://src/score_tracker.gd" id="13_kvuet"]
+[ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="17_5newe"]
 [ext_resource type="Script" uid="uid://dpqak2niuwmb8" path="res://src/overlay.gd" id="23_bt5mj"]
 [ext_resource type="Script" uid="uid://qlmv3v6qo2q1" path="res://src/rich_text_shadow.gd" id="24_e1j6l"]
 
@@ -47,9 +48,6 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(122, 122)
-
-[sub_resource type="Theme" id="Theme_dinhu"]
-default_font = ExtResource("8_gee14")
 
 [sub_resource type="FontVariation" id="FontVariation_trtic"]
 base_font = ExtResource("8_gee14")
@@ -82,43 +80,42 @@ texture = ExtResource("1_lbhrr")
 centered = false
 
 [node name="Grid" type="Node2D" parent="Bag"]
-position = Vector2(32, 48)
+position = Vector2(48, 64)
 
 [node name="Cell5" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(16, 80)
+position = Vector2(0, 32)
 
 [node name="Cell6" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(16, 48)
+position = Vector2(32, 32)
 
 [node name="Cell7" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(48, 80)
+position = Vector2(64, 32)
 
 [node name="Cell8" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(48, 48)
+position = Vector2(96, 32)
 
 [node name="Cell13" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(80, 80)
+position = Vector2(0, 64)
 
 [node name="Cell14" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(80, 48)
+position = Vector2(32, 64)
 
 [node name="Cell15" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(112, 80)
+position = Vector2(64, 64)
 
 [node name="Cell16" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(112, 48)
+position = Vector2(96, 64)
 
 [node name="Cell17" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(48, 16)
 
 [node name="Cell25" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(16, 16)
+position = Vector2(32, 0)
 
 [node name="Cell18" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(80, 16)
+position = Vector2(64, 0)
 
 [node name="Cell21" parent="Bag/Grid" instance=ExtResource("3_iywne")]
-position = Vector2(112, 16)
+position = Vector2(96, 0)
 
 [node name="DiscardArea" type="Area2D" parent="."]
 position = Vector2(258, 113)
@@ -131,7 +128,7 @@ shape = SubResource("RectangleShape2D_p57ef")
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-theme = SubResource("Theme_dinhu")
+theme = ExtResource("17_5newe")
 metadata/_edit_use_anchors_ = true
 
 [node name="NextQuestButton" type="Button" parent="UI"]
@@ -158,7 +155,7 @@ script = ExtResource("13_kvuet")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-theme = SubResource("Theme_dinhu")
+theme = ExtResource("17_5newe")
 script = ExtResource("23_bt5mj")
 
 [node name="LoreTextShadow" type="RichTextLabel" parent="Overlay" node_paths=PackedStringArray("source")]
