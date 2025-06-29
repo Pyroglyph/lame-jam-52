@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var target_position: Vector2 = global_position
+
 func get_discarded_items() -> Array[Item]:
 	var items: Array[Item] = []
 	for child in get_children():
@@ -48,13 +50,17 @@ func discard_items() -> bool:
 	for item in items_to_discard:
 		# Detach to avoid any race conditions
 		item.reparent($/root, true)
-
-		# Animate them offscreen instead of just having them disappear
-		item.target_position = Vector2(item.global_position.x, 250)
-
-		var timer = get_tree().create_timer(0.2)
-		timer.timeout.connect(func():
-			item.queue_free()
-		)
+		item.queue_free()
 	
 	return true
+
+func _process(_delta: float) -> void:
+	global_position = global_position.lerp(target_position, 0.2)
+	update_item_positions()
+
+func begin_hiding():
+	target_position = global_position + Vector2(120, 0)
+
+func begin_showing():
+	show()
+	target_position = global_position - Vector2(120, 0)

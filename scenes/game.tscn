@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=39 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://c8wt6x6jal4ru" path="res://assets/audio/ambience_mountain.mp3" id="16_sww3w"]
 [ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="17_5newe"]
 [ext_resource type="Texture2D" uid="uid://1jar5momsh3c" path="res://assets/Background_LeatherBagstring.png" id="17_bhx41"]
+[ext_resource type="Script" uid="uid://dgsjvi4il4rbi" path="res://src/bag.gd" id="18_sww3w"]
 [ext_resource type="PackedScene" uid="uid://chi4j7kfsadhr" path="res://scenes/lore_overlay.tscn" id="20_1kice"]
 [ext_resource type="Texture2D" uid="uid://bf53sgwegb0i5" path="res://assets/Background_Cloth.png" id="21_qnb83"]
 [ext_resource type="PackedScene" uid="uid://ni7h7a4jx7ss" path="res://scenes/custom_button.tscn" id="26_bhx41"]
@@ -122,6 +123,7 @@ panning_strength = 0.0
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Bag" type="Node2D" parent="."]
+script = ExtResource("18_sww3w")
 
 [node name="BackgroundLeatherBag" type="Sprite2D" parent="Bag"]
 position = Vector2(160, 90)

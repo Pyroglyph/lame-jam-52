@@ -10,6 +10,7 @@ var grab_offset := Vector2.ZERO
 var target_position := Vector2.ZERO
 var original_position := Vector2.ZERO
 var original_grid_cells = []
+var can_move = true
 
 func get_value() -> int:
 	var multiplier = 1 + (tier as float * 0.8)
@@ -26,6 +27,9 @@ func get_grid_cells() -> Array[Cell]:
 
 # called by child cells
 func on_press(_cell: Cell):
+	if not can_move:
+		return
+	
 	print("grabbed " + item_name)
 
 	is_grabbed = true
@@ -43,12 +47,6 @@ func on_press(_cell: Cell):
 			cell.contains = null
 
 func _process(_delta: float) -> void:
-	if is_grabbed:
-		# stick to mouse
-		target_position = get_viewport().get_mouse_position() - grab_offset
-	
-	global_position = global_position.lerp(target_position, 0.2)
-
 	match tier:
 		Tier.BRONZE:
 			$Sprite2DTint.modulate = Color(1, 0.5, 0)
@@ -58,6 +56,16 @@ func _process(_delta: float) -> void:
 			$Sprite2DTint.modulate = Color(1, 1, 0)
 		Tier.MITHRIL:
 			$Sprite2DTint.modulate = Color(0.5, 0.15, 1.0)
+
+	if not can_move:
+		return
+	
+	if is_grabbed:
+		# stick to mouse
+		target_position = get_viewport().get_mouse_position() - grab_offset
+	
+	global_position = global_position.lerp(target_position, 0.2)
+
 
 func intersects_with(global_rect: Rect2) -> bool:
 	# This only handles rectangles
@@ -80,6 +88,9 @@ func discard():
 	z_index = 0
 
 func on_release():
+	if not can_move:
+		return
+
 	# first, determine if any of the cells are colliding with the discard area
 	var discard_rect: Rect2 = $/root/Game/DiscardArea/CollisionShape2D.shape.get_rect()
 	discard_rect.position = $/root/Game/DiscardArea.to_global(discard_rect.position)
@@ -184,4 +195,3 @@ func upgrade():
 	tier += 1
 	Sound.play("res://assets/audio/bag_place" + str(randi() % 2) + ".ogg")
 	get_tree().create_timer(0.05).timeout.connect(func(): Sound.play("res://assets/audio/merge.ogg"))
-	

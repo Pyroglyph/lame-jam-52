@@ -20,6 +20,8 @@ func _ready() -> void:
 	for item in rare_items:
 		all_items.append({"scene": item, "chance": 1})
 
+	$Bag.hide()
+	$DiscardArea.hide()
 	show_next_lore()
 
 # Generates new items and places them into the discard area
@@ -43,8 +45,7 @@ func give_new_items():
 
 	for item in new_items:
 		var new_item = item.instantiate()
-		# New items fly in from offscreen
-		new_item.global_position = Vector2(400, $DiscardArea.global_position.y)
+		new_item.global_position = $DiscardArea.global_position
 
 		# Add a 5% chance for an item to be rarer
 		if randi() % 20 == 0:
@@ -54,23 +55,19 @@ func give_new_items():
 
 func next_quest():
 	Sound.play("res://assets/audio/thump" + str(randi() % 3) + ".wav")
+	$UI.hide()
 
 	day += 1
 
-	var time := 0.
-	if (!$DiscardArea.discard_items()):
-		time = 0.2
-
-	var timer = get_tree().create_timer(time)
-	timer.timeout.connect(show_next_lore)
+	show_next_lore()
 
 func show_next_lore():
-	Sound.play("res://assets/audio/bag_move.ogg")
-
-	# temporary instant-hide, replace with sliding animation later
-	$Bag.hide()
-	$DiscardArea.hide()
 	$UI.hide()
+	if day != 0:
+		Sound.play("res://assets/audio/bag_move.ogg")
+
+	$Bag.begin_hiding()
+	$DiscardArea.begin_hiding()
 
 	if day == len(lore) - 1:
 		# end of the game!
@@ -104,8 +101,9 @@ func show_next_day():
 
 	# TODO Change time of day / background - or maybe fade it in while the lore is showing?
 
-	$Bag.show()
-	$DiscardArea.show()
+	$Bag.begin_showing()
+	$DiscardArea.discard_items()
+	$DiscardArea.begin_showing()
 	$UI.show()
 
 	give_new_items()

@@ -5,7 +5,7 @@ class_name Cell
 
 var contains: Item = null
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_item:
 		$Sprite2D.texture = null
 		var tier = ""
