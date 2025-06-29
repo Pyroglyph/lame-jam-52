@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dijgy80lkkngu"]
+[gd_scene load_steps=8 format=3 uid="uid://dijgy80lkkngu"]
 
 [ext_resource type="Texture2D" uid="uid://l6ykeluibjul" path="res://assets/Background_DungeonWall.png" id="1_f1n8m"]
 [ext_resource type="Texture2D" uid="uid://dvjshwm4d2fag" path="res://assets/Background_torch.png" id="2_f1rnt"]
 [ext_resource type="Texture2D" uid="uid://dnf3ttvl82b47" path="res://assets/Background_torch_fire.png" id="3_7iaq7"]
 [ext_resource type="Texture2D" uid="uid://bc5bilrfkywld" path="res://assets/Background_torch_holder.png" id="4_ufq56"]
+[ext_resource type="Texture2D" uid="uid://6akjmul18iip" path="res://assets/Background_clouds.png" id="5_f1rnt"]
 
 [sub_resource type="Gradient" id="Gradient_yc1hn"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -53,3 +54,11 @@ position = Vector2(256, 28)
 scale = Vector2(5.4375, 5.4375)
 color = Color(1, 0.498039, 0, 1)
 texture = SubResource("GradientTexture2D_tgtyk")
+
+[node name="BackgroundClouds" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.33054, 0.1218, 0.42, 0.27451)
+z_index = 2
+position = Vector2(160, 90)
+rotation = 3.14159
+texture = ExtResource("5_f1rnt")
