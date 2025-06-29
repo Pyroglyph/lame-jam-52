@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dijgy80lkkngu"]
+
+[ext_resource type="Texture2D" uid="uid://l6ykeluibjul" path="res://assets/Background_DungeonWall.png" id="1_f1n8m"]
+[ext_resource type="Texture2D" uid="uid://dvjshwm4d2fag" path="res://assets/Background_torch.png" id="2_f1rnt"]
+[ext_resource type="Texture2D" uid="uid://dnf3ttvl82b47" path="res://assets/Background_torch_fire.png" id="3_7iaq7"]
+[ext_resource type="Texture2D" uid="uid://bc5bilrfkywld" path="res://assets/Background_torch_holder.png" id="4_ufq56"]
+
+[sub_resource type="Gradient" id="Gradient_yc1hn"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tgtyk"]
+gradient = SubResource("Gradient_yc1hn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="MountainDayBackground" type="CanvasGroup"]
+
+[node name="BackgroundDungeonWall" type="Sprite2D" parent="."]
+modulate = Color(0.2154, 0.144, 0.45, 1)
+light_mask = 2
+position = Vector2(160, 90)
+texture = ExtResource("1_f1n8m")
+
+[node name="BackgroundTorch" type="Sprite2D" parent="."]
+modulate = Color(0.14, 0.14, 0.14, 1)
+light_mask = 2
+position = Vector2(160, 90)
+texture = ExtResource("2_f1rnt")
+
+[node name="BackgroundTorchFire" type="Sprite2D" parent="."]
+modulate = Color(0.23, 0.23, 0.23, 1)
+light_mask = 2
+position = Vector2(160, 90)
+texture = ExtResource("3_7iaq7")
+
+[node name="BackgroundTorchHolder" type="Sprite2D" parent="."]
+modulate = Color(0.14, 0.14, 0.14, 1)
+light_mask = 2
+position = Vector2(160, 90)
+texture = ExtResource("4_ufq56")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(256, 28)
+scale = Vector2(5.4375, 5.4375)
+color = Color(1, 0.498039, 0, 1)
+energy = 7.32
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_tgtyk")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(256, 28)
+scale = Vector2(5.4375, 5.4375)
+color = Color(1, 0.498039, 0, 1)
+texture = SubResource("GradientTexture2D_tgtyk")

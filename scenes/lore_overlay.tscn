@@ -53,6 +53,28 @@ visible_characters_behavior = 1
 script = ExtResource("3_x0i6y")
 source = NodePath("..")
 
+[node name="TextShadow2" type="RichTextLabel" parent="Text" node_paths=PackedStringArray("source")]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_top = 1.0
+offset_right = 304.0
+offset_bottom = 165.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "Your journey with [color=#ff0]the Knight[/color] begins in a lush forest.
+
+He spots a group of [color=#5fc]slimes[/color] in a clearing and rushes off to deal with them."
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+visible_characters_behavior = 1
+script = ExtResource("3_x0i6y")
+source = NodePath("..")
+
 [node name="ContinueMarker" type="Polygon2D" parent="."]
 visible = false
 position = Vector2(261, 162)

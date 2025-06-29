@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlq4jnrdxbx6s"]
+
+[ext_resource type="Texture2D" uid="uid://vsq4n6m3ayc3" path="res://assets/Background_Sky.png" id="1_ymgpn"]
+[ext_resource type="Texture2D" uid="uid://brf6gvheo2b8d" path="res://assets/Background_Mountain.png" id="2_qh4xh"]
+[ext_resource type="Texture2D" uid="uid://0jdxav8vpcyc" path="res://assets/Background_snow.png" id="3_owruf"]
+[ext_resource type="Texture2D" uid="uid://6akjmul18iip" path="res://assets/Background_clouds.png" id="4_yis3l"]
+
+[node name="MountainDayBackground" type="CanvasGroup"]
+
+[node name="BackgroundSky" type="Sprite2D" parent="."]
+modulate = Color(0.819391, 0.936919, 1, 1)
+position = Vector2(160, 90)
+texture = ExtResource("1_ymgpn")
+
+[node name="BackgroundMountain" type="Sprite2D" parent="."]
+modulate = Color(0.754761, 0.752832, 0.856537, 1)
+position = Vector2(160, 90)
+texture = ExtResource("2_qh4xh")
+
+[node name="BackgroundSnow" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("3_owruf")
+
+[node name="BackgroundClouds" type="Sprite2D" parent="."]
+modulate = Color(0.89, 0.89, 0.89, 1)
+position = Vector2(160, 90)
+texture = ExtResource("4_yis3l")

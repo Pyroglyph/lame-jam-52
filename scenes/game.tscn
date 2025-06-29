@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=34 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://e6jvkkdti2qi" path="res://scenes/backgrounds/forest_evening.tscn" id="11_5newe"]
 [ext_resource type="Script" uid="uid://cck8kukpkx6ws" path="res://src/discard_area.gd" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b6dtn6mmayd5w" path="res://scenes/backgrounds/forest_night.tscn" id="12_37s47"]
+[ext_resource type="PackedScene" uid="uid://dlq4jnrdxbx6s" path="res://scenes/backgrounds/mountain_day.tscn" id="13_5newe"]
+[ext_resource type="PackedScene" uid="uid://dijgy80lkkngu" path="res://scenes/backgrounds/dungeon.tscn" id="13_37s47"]
 [ext_resource type="Script" uid="uid://b1tg51aa1xrvc" path="res://src/score_tracker.gd" id="13_kvuet"]
 [ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="17_5newe"]
 [ext_resource type="PackedScene" uid="uid://chi4j7kfsadhr" path="res://scenes/lore_overlay.tscn" id="20_1kice"]
@@ -31,7 +33,7 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_37s47"]
 script = ExtResource("9_264po")
-text = "As the sun sets, [color=#ff0]the Knight[/color] animatedly tells you a tale of wonder and whimsy as you both sit around the campfire.
+text = "As the sun sets, [color=#ff0]the Knight[/color] animatedly tells you a tale of wonder and whimsy as you both eat around the campfire.
 
 You try and listen, but it's hard to hear him over his armour clanking."
 background = ExtResource("11_5newe")
@@ -39,44 +41,50 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_bt5mj"]
 script = ExtResource("9_264po")
-text = "After a hearty meal and a good nights rest [color=#ff0]the Knight[/color] finds a dank Dungeon!
+text = "You awake with a start to the sounds of clashing swords. [color=#c00]Bandits[/color] have found your campsite!
 
-[color=#d9d39c] The skeletal undead[/color] rise from the crypts ready for battle no match of couse for our brave[color=#ff0] Knight[/color]!
-
-"
+Luckily, [color=#ff0]the Knight[/color] is skilled and deftly protects both you and the rabbit stew left over from your earlier meal.
+You're not sure which he values more..."
 background = ExtResource("12_37s47")
 metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_bhx41"]
 script = ExtResource("9_264po")
-text = "You follow [color=#ff0]the Knight[/color] through the endless maze of corriors and creepy crypts as the kinght cuts down [color=#d9d39c]the skeletal horde[/color]!
+text = "On the way to the [color=#ccc]Mountain Village[/color] you smell something pungent. Something [i]dank[/i].
 
-Is that... daylight in the distance?"
-background = ExtResource("11_5newe")
+Soon, you locate the entrance to a [color=#0a5]Dungeon[/color], into which [color=#ff0]the Knight[/color] immediately charges, sword held high!"
+background = ExtResource("13_37s47")
+metadata/_custom_type_script = "uid://d117er2xcwdrr"
+
+[sub_resource type="Resource" id="Resource_qnb83"]
+script = ExtResource("9_264po")
+text = "It feels like you've been here for days. The miasma of the [color=#0a5]Dungeon[/color] feels heavy in your lungs, almost as if they're filled with a thick goo.
+
+The only thing keeping you both moving is the fading hope of finally finding the exit."
+background = ExtResource("13_37s47")
 metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_e1j6l"]
 script = ExtResource("9_264po")
-text = "The sight of the grand mountains is a sight for weary eyes. \"FOR GLORY AND GOLD!\" [color=#ff0]The Knight[/color] shouts, his words bellow out into the distance. 
+text = "After spending hours in the suffocating belly of the [color=#0a5]Dungeon[/color], the grandiose sight of the mountains nearly brings a tear to your eye.
 
-[color=#ff0]the Knight[/color] charges though the pass with sword in hand ready for battle."
-background = ExtResource("10_1kice")
+Re-energised by the clean air and the sight of your goal, [color=#ff0]the Knight[/color] forges ahead."
+background = ExtResource("13_5newe")
 metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_pl11u"]
 script = ExtResource("9_264po")
-text = "[color=#ff0]The Knight[/color] cheers as these passes are plentiful of glorious loot! 
+text = "You suddenly bump into [color=#ff0]the Knight’s[/color] back - he's stopped dead in his tracks.
+Peering past, you see the body of a young adventurer, fallen to frostbite. Their gear still lies beside them, untouched.
 
-At the campfire we both wonder how all this stuff got here.
-
-"
-background = ExtResource("11_5newe")
+[color=#ff0]The Knight[/color] removes his helmet, says a few words, and you move on."
+background = ExtResource("13_5newe")
 metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="Resource" id="Resource_5newe"]
 script = ExtResource("9_264po")
-text = "After all the trials you've been through, you make it back to town safely to sell your hard-earned loot."
-background = ExtResource("10_1kice")
+text = "After all the trials you've faced, you finally reach the [color=#ccc]Mountain Village[/color] safely, ready to sell your hard-earned loot."
+background = ExtResource("13_5newe")
 metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
@@ -96,7 +104,7 @@ script = ExtResource("1_iywne")
 common_items = Array[PackedScene]([ExtResource("4_u5sy4"), ExtResource("3_p57ef"), ExtResource("2_iywne"), ExtResource("5_ir15t")])
 uncommon_items = Array[PackedScene]([ExtResource("5_vtaks"), ExtResource("6_kvpfn")])
 rare_items = Array[PackedScene]([ExtResource("5_0tnpc")])
-lore = Array[ExtResource("9_264po")]([SubResource("Resource_1kice"), SubResource("Resource_37s47"), SubResource("Resource_bt5mj"), SubResource("Resource_bhx41"), SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_5newe")])
+lore = Array[ExtResource("9_264po")]([SubResource("Resource_1kice"), SubResource("Resource_37s47"), SubResource("Resource_bt5mj"), SubResource("Resource_bhx41"), SubResource("Resource_qnb83"), SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_5newe")])
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_37s47")
@@ -105,6 +113,8 @@ panning_strength = 0.0
 parameters/looping = true
 
 [node name="Background" type="Node2D" parent="."]
+
+[node name="MountainDayBackground" parent="Background" instance=ExtResource("13_37s47")]
 
 [node name="Bag" type="Node2D" parent="."]
 
