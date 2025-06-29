@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://chi4j7kfsadhr"]
+[gd_scene load_steps=5 format=3 uid="uid://chi4j7kfsadhr"]
 
 [ext_resource type="Theme" uid="uid://bl5y0osvxdl08" path="res://theme.tres" id="1_vndpy"]
 [ext_resource type="Script" uid="uid://dpqak2niuwmb8" path="res://src/lore_overlay.gd" id="2_4lju0"]
 [ext_resource type="Script" uid="uid://qlmv3v6qo2q1" path="res://src/rich_text_shadow.gd" id="3_x0i6y"]
+[ext_resource type="PackedScene" uid="uid://ni7h7a4jx7ss" path="res://scenes/custom_button.tscn" id="5_t87bd"]
 
 [node name="LoreOverlay" type="Control"]
 layout_mode = 3
@@ -85,3 +86,24 @@ show_behind_parent = true
 position = Vector2(1, 1)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(37, 3, 43, 3, 42, -2, 51, 4, 43, 10, 43, 6, 36, 6)
+
+[node name="PlayAgainButton" parent="." instance=ExtResource("5_t87bd")]
+visible = false
+offset_left = 1.0
+offset_top = 154.0
+offset_right = 95.0
+offset_bottom = 179.0
+text = "Play Again"
+color = Color(0.423529, 0.517647, 0.54902, 1)
+
+[node name="ExitButton" parent="." instance=ExtResource("5_t87bd")]
+visible = false
+offset_left = 269.0
+offset_top = 154.0
+offset_right = 319.0
+offset_bottom = 179.0
+text = "Exit"
+color = Color(0.55, 0.4235, 0.4235, 1)
+
+[connection signal="clicked" from="PlayAgainButton" to="." method="_on_play_again_button_clicked"]
+[connection signal="clicked" from="ExitButton" to="." method="_on_exit_button_clicked"]

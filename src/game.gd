@@ -109,3 +109,16 @@ func show_next_day():
 	$UI.show()
 
 	give_new_items()
+
+func restart():
+	# delete all items in bag
+	for cell: Cell in $Bag/Grid.get_children():
+		if cell.contains:
+			cell.contains.queue_free()
+	
+	# delete all items in discard area
+	for item: Item in $DiscardArea.get_children().filter(func (c): return c is Item):
+		item.queue_free()
+
+	day = 0
+	show_next_lore()

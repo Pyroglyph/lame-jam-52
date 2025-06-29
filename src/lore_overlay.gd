@@ -57,8 +57,8 @@ func show_next_character():
 
 	if $Text.visible_ratio >= 1:
 		if current_lore_is_final:
-			pass
-			# TODO: show a restart button
+			$PlayAgainButton.show()
+			$ExitButton.show()
 		else:
 			# fully shown, wait a couple of seconds and then show the continue mark
 			var timer = get_tree().create_timer(1)
@@ -82,3 +82,15 @@ func _input(event: InputEvent) -> void:
 func skip_animation():
 	print("skipping animation")
 	delay = fast_delay
+
+# seems weird to have these buttons in the lore viewer, but its convenient so ehhhh
+
+func _on_exit_button_clicked() -> void:
+	Sound.play("res://assets/audio/thump" + str(randi() % 3) + ".wav")
+	get_tree().quit()
+
+func _on_play_again_button_clicked() -> void:
+	Sound.play("res://assets/audio/thump" + str(randi() % 3) + ".wav")
+	$PlayAgainButton.hide()
+	$ExitButton.hide()
+	$/root/Game.restart()

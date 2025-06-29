@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cm5wyjvcwvasy"]
+[gd_scene load_steps=36 format=3 uid="uid://cm5wyjvcwvasy"]
 
 [ext_resource type="Script" uid="uid://ba2h7jay6m07v" path="res://src/game.gd" id="1_iywne"]
 [ext_resource type="Texture2D" uid="uid://bnvbe6ocw4xge" path="res://assets/Background.png" id="1_lbhrr"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://jol80pseuel6" path="res://scenes/items/sword.tscn" id="5_ir15t"]
 [ext_resource type="PackedScene" uid="uid://cg000hwsj0kil" path="res://scenes/items/necklace.tscn" id="5_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bj8hmfx4cfcfh" path="res://scenes/items/scepter.tscn" id="6_kvpfn"]
-[ext_resource type="FontFile" uid="uid://dwh88hp7prsrr" path="res://assets/alagard.ttf" id="8_gee14"]
 [ext_resource type="AudioStream" uid="uid://duukm74sv44i" path="res://assets/audio/ambience_forest.mp3" id="9_37s47"]
 [ext_resource type="Script" uid="uid://d117er2xcwdrr" path="res://src/lore.gd" id="9_264po"]
 [ext_resource type="PackedScene" uid="uid://dqqytu5vdcuop" path="res://scenes/backgrounds/forest_day.tscn" id="10_1kice"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://1jar5momsh3c" path="res://assets/Background_LeatherBagstring.png" id="17_bhx41"]
 [ext_resource type="PackedScene" uid="uid://chi4j7kfsadhr" path="res://scenes/lore_overlay.tscn" id="20_1kice"]
 [ext_resource type="Texture2D" uid="uid://bf53sgwegb0i5" path="res://assets/Background_Cloth.png" id="21_qnb83"]
+[ext_resource type="PackedScene" uid="uid://ni7h7a4jx7ss" path="res://scenes/custom_button.tscn" id="26_bhx41"]
 
 [sub_resource type="Resource" id="Resource_1kice"]
 script = ExtResource("9_264po")
@@ -92,10 +92,6 @@ metadata/_custom_type_script = "uid://d117er2xcwdrr"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
 size = Vector2(122, 122)
-
-[sub_resource type="FontVariation" id="FontVariation_trtic"]
-base_font = ExtResource("8_gee14")
-baseline_offset = 0.145
 
 [sub_resource type="LabelSettings" id="LabelSettings_kvuet"]
 shadow_size = 0
@@ -190,15 +186,13 @@ anchors_preset = 0
 theme = ExtResource("17_5newe")
 metadata/_edit_use_anchors_ = true
 
-[node name="NextQuestButton" type="Button" parent="UI"]
+[node name="NextQuestButton" parent="UI" instance=ExtResource("26_bhx41")]
 layout_mode = 0
-offset_left = 231.0
-offset_top = -3.0
-offset_right = 323.0
-offset_bottom = 20.0
-theme_override_fonts/font = SubResource("FontVariation_trtic")
-text = "Next Quest"
-alignment = 0
+offset_left = 265.0
+offset_top = 1.0
+offset_right = 319.0
+text = "Done"
+color = Color(0.4235, 0.518375, 0.55, 1)
 
 [node name="Score" type="Label" parent="UI"]
 layout_mode = 0
@@ -213,5 +207,5 @@ script = ExtResource("13_kvuet")
 [node name="LoreOverlay" parent="." instance=ExtResource("20_1kice")]
 visible = false
 
-[connection signal="pressed" from="UI/NextQuestButton" to="." method="next_quest"]
+[connection signal="clicked" from="UI/NextQuestButton" to="." method="next_quest"]
 [connection signal="next_day" from="LoreOverlay" to="." method="show_next_day"]
