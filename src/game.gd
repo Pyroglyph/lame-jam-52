@@ -69,6 +69,7 @@ func show_next_lore():
 
 	# temporary instant-hide, replace with sliding animation later
 	$Bag.hide()
+	$DiscardArea.hide()
 	$UI.hide()
 
 	if day == len(lore) - 1:
@@ -106,6 +107,7 @@ func show_next_day():
 	# TODO Change time of day / background - or maybe fade it in while the lore is showing?
 
 	$Bag.show()
+	$DiscardArea.show()
 	$UI.show()
 
 	give_new_items()
