@@ -17,7 +17,7 @@ func get_value() -> int:
 
 var is_cell = func(c): return c is Cell
 func get_grid_cells() -> Array[Cell]:
-	var children = $/root/Game/Grid.get_children()
+	var children = $/root/Game/Bag/Grid.get_children()
 	var cells: Array[Cell]
 	for child in children:
 		if child is Cell:
@@ -32,7 +32,7 @@ func on_press(_cell: Cell):
 	z_index = 1000
 	grab_offset = get_viewport().get_mouse_position() - global_position
 	original_position = global_position.round()
-	reparent($/root/Game)
+	reparent($/root/Game, true)
 
 	original_grid_cells = []
 	# Iterate through grid cells and clear the reference if they contain this item
@@ -139,6 +139,8 @@ func on_release():
 			target_position = snap_target
 
 		Sound.play("res://assets/audio/bag_place" + str(randi() % 2) + ".ogg")
+
+		reparent($/root/Game/Bag, true)
 	else:
 		print("returning " + item_name + " to original position")
 		if discard_global_rect.has_point(original_position):

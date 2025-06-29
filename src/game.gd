@@ -4,8 +4,12 @@ extends Node2D
 @export var uncommon_items: Array[PackedScene] = []
 @export var rare_items: Array[PackedScene] = []
 
+@export var lore: Array[Lore] = []
+# @export var lore_backgrounds: Array[PackedScene] = []
+
 var all_items: Array[Dictionary] = []
 
+var day := 0
 
 func _ready() -> void:
 	# Combine all items into a single list with rarity weights
@@ -15,8 +19,10 @@ func _ready() -> void:
 		all_items.append({"scene": item, "chance": 3})
 	for item in rare_items:
 		all_items.append({"scene": item, "chance": 1})
-	
-	give_new_items()
+
+	$Overlay.next_day.connect(show_next_day)
+
+	show_next_lore()
 
 # Generates new items and places them into the discard area
 func give_new_items():
@@ -50,8 +56,36 @@ func give_new_items():
 
 func next_quest():
 	Sound.play("res://assets/audio/thump" + str(randi() % 3) + ".wav")
-	if ($DiscardArea.discard_items()):
-		var timer = get_tree().create_timer(0.2)
-		timer.timeout.connect(give_new_items)
-	else:
-		give_new_items()
+
+	day += 1
+
+	var time := 0.
+	if (!$DiscardArea.discard_items()):
+		time = 0.2
+
+	var timer = get_tree().create_timer(time)
+	timer.timeout.connect(show_next_lore)
+
+func show_next_lore():
+	Sound.play("res://assets/audio/bag_move.ogg")
+
+	if day == len(lore):
+		# end of the game!
+		emit_signal("end")
+
+	# temporary instant-hide, replace with sliding animation later
+	$Bag.hide()
+	$UI.hide()
+
+	$Overlay.show_lore(lore[day])
+
+func show_next_day():
+
+	$Overlay.hide()
+
+	# TODO Change time of day / background - or maybe fade it in while the lore is showing?
+
+	$Bag.show()
+	$UI.show()
+
+	give_new_items()
